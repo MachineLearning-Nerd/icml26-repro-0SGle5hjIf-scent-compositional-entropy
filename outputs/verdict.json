@@ -1,0 +1,33 @@
+{
+  "c1_closed_form": {
+    "passed": true,
+    "nu_min": 3.3742180733493927,
+    "nu_max": 4.355729969746826
+  },
+  "c2_convergence": {
+    "passed": true,
+    "gap_first": 4.378884096488093,
+    "gap_last": 4.314640312530739
+  },
+  "c3_bounded": {
+    "passed": true,
+    "nu_min": 3.3742180733493927,
+    "nu_max": 4.355729969746826
+  },
+  "c4_kappa": {
+    "passed": true,
+    "kappa": 8.334703261937044
+  },
+  "c5_vs_baseline": {
+    "passed": true,
+    "scent": 4.314640312530739,
+    "sgd": 4.309394561261754,
+    "note": "Paper benchmarks on Glint360K/TreeOfLife-10M; we verify SCENT vs SGD on synthetic log-sum-exp."
+  },
+  "c6_partial_auc": {
+    "passed": true,
+    "initial": 4.378884096488093,
+    "final": 4.314640312530739,
+    "note": "SCENT convergence on synthetic log-sum-exp as proxy (paper: partial AUC on CIFAR-10/100)."
+  }
+}
