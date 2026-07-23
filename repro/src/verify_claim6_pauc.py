@@ -18,6 +18,7 @@ import random
 import subprocess
 import sys
 import time
+import urllib.request
 from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
@@ -30,6 +31,7 @@ from PIL import Image
 from sklearn.metrics import roc_auc_score
 from torch.utils.data import DataLoader, Dataset, Sampler
 from torchvision import datasets, models, transforms
+from torchvision.datasets.utils import extract_archive
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -63,6 +65,7 @@ DATA_MIRRORS = {
             "cifar-10-python.tar.gz"
         ),
         "sha256": "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce",
+        "bytes": 170_498_071,
     },
     "cifar100": {
         "url": (
@@ -76,6 +79,7 @@ DATA_MIRRORS = {
             "cifar-100-python.tar.gz"
         ),
         "sha256": "85cd44d02ba6437773c5bbd22e183051d648de2e7d6b014e1ef29b855ba677a7",
+        "bytes": 169_001_437,
     },
 }
 
@@ -101,6 +105,71 @@ def seed_everything(seed: int) -> None:
     np.random.seed(seed)
     torch.manual_seed(seed)
     torch.use_deterministic_algorithms(True)
+
+
+def ensure_archive(name: str, dataset_class: type) -> tuple[Path, dict[str, object]]:
+    source = DATA_MIRRORS[name]
+    archive = CACHE_DIR / dataset_class.filename
+    reused = (
+        archive.exists()
+        and archive.stat().st_size == source["bytes"]
+        and md5(archive) == dataset_class.tgz_md5
+        and sha256(archive) == source["sha256"]
+    )
+    started = time.perf_counter()
+    if not reused:
+        partial = archive.with_suffix(archive.suffix + ".part")
+        request = urllib.request.Request(
+            str(source["url"]),
+            headers={"User-Agent": "OpenResearch-reproduction/1.0"},
+        )
+        downloaded = 0
+        next_report = 16 * 1024 * 1024
+        with urllib.request.urlopen(request, timeout=60) as response, partial.open(
+            "wb"
+        ) as handle:
+            while chunk := response.read(8 * 1024 * 1024):
+                handle.write(chunk)
+                downloaded += len(chunk)
+                if downloaded >= next_report:
+                    print(
+                        f"CLAIM6_DOWNLOAD dataset={name} "
+                        f"bytes={downloaded}/{source['bytes']}",
+                        flush=True,
+                    )
+                    next_report += 16 * 1024 * 1024
+        if downloaded != source["bytes"]:
+            raise RuntimeError(
+                f"{name} byte count mismatch: {downloaded} != {source['bytes']}"
+            )
+        partial_md5 = md5(partial)
+        partial_sha256 = sha256(partial)
+        if (
+            partial_md5 != dataset_class.tgz_md5
+            or partial_sha256 != source["sha256"]
+        ):
+            raise RuntimeError(
+                f"{name} whole-archive checksum mismatch: "
+                f"md5={partial_md5} sha256={partial_sha256}"
+            )
+        partial.replace(archive)
+
+    archive_md5 = md5(archive)
+    archive_sha256 = sha256(archive)
+    audit = {
+        "mirror_url": source["url"],
+        "record_url": source["record"],
+        "archive": dataset_class.filename,
+        "archive_bytes": archive.stat().st_size,
+        "archive_md5": archive_md5,
+        "archive_sha256": archive_sha256,
+        "canonical_torchvision_md5": dataset_class.tgz_md5,
+        "canonical_hf_datasets_sha256": source["sha256"],
+        "archive_reused": reused,
+        "download_seconds": time.perf_counter() - started,
+        "transport": "urllib.request with 8 MiB chunks and no progress callback",
+    }
+    return archive, audit
 
 
 class ImageArrayDataset(Dataset):
@@ -190,26 +259,14 @@ class BalancedBatchSampler(Sampler[int]):
 
 
 def load_binary_dataset(name: str) -> tuple[np.ndarray, ...]:
-    base_class = datasets.CIFAR10 if name == "cifar10" else datasets.CIFAR100
-    dataset_class = type(
-        f"Checksummed{base_class.__name__}",
-        (base_class,),
-        {"url": DATA_MIRRORS[name]["url"]},
-    )
-    train = dataset_class(root=CACHE_DIR, train=True, download=True)
-    test = dataset_class(root=CACHE_DIR, train=False, download=True)
-    archive = CACHE_DIR / base_class.filename
-    archive_md5 = md5(archive)
-    archive_sha256 = sha256(archive)
-    if archive_md5 != base_class.tgz_md5:
-        raise RuntimeError(
-            f"{name} archive MD5 mismatch: {archive_md5} != {base_class.tgz_md5}"
-        )
-    if archive_sha256 != DATA_MIRRORS[name]["sha256"]:
-        raise RuntimeError(
-            f"{name} archive SHA-256 mismatch: "
-            f"{archive_sha256} != {DATA_MIRRORS[name]['sha256']}"
-        )
+    dataset_class = datasets.CIFAR10 if name == "cifar10" else datasets.CIFAR100
+    archive, acquisition = ensure_archive(name, dataset_class)
+    try:
+        train = dataset_class(root=CACHE_DIR, train=True, download=False)
+    except RuntimeError:
+        extract_archive(str(archive), str(CACHE_DIR))
+        train = dataset_class(root=CACHE_DIR, train=True, download=False)
+    test = dataset_class(root=CACHE_DIR, train=False, download=False)
     train_images = np.asarray(train.data)
     train_classes = np.asarray(train.targets)
     test_images = np.asarray(test.data)
@@ -231,16 +288,7 @@ def load_binary_dataset(name: str) -> tuple[np.ndarray, ...]:
         train_targets[retained],
         test_images,
         test_targets,
-        {
-            "mirror_url": DATA_MIRRORS[name]["url"],
-            "record_url": DATA_MIRRORS[name]["record"],
-            "archive": base_class.filename,
-            "archive_bytes": archive.stat().st_size,
-            "archive_md5": archive_md5,
-            "archive_sha256": archive_sha256,
-            "canonical_torchvision_md5": base_class.tgz_md5,
-            "canonical_hf_datasets_sha256": DATA_MIRRORS[name]["sha256"],
-        },
+        acquisition,
     )
 
 

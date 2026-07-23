@@ -34,6 +34,10 @@ torchvision's canonical MD5 values `c58f30108f718f92721af3b95e74349a`
 and `eb9058c3a382ffc7106e4002c42a8d85`, and the independently recorded HF
 datasets SHA-256 values `6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce`
 and `85cd44d02ba6437773c5bbd22e183051d648de2e7d6b014e1ef29b855ba677a7`.
+To preserve the frozen environment, the final child uses the Python standard
+library transport in 8 MiB chunks rather than adding an HTTP dependency.
+Whole-archive byte count, MD5, and SHA-256 are checked before atomic promotion;
+torchvision then checks every extracted batch file against its own manifest.
 
 The exact prose claim is that SOX and SCENT obtain the best training-loss
 results and SCENT is slightly better than SOX. Figure-vector extraction gives
