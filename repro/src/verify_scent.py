@@ -90,3 +90,13 @@ for k_, r in results.items():
 print(f"\n  {passed}/{len(results)} claims verified.")
 json.dump(results, open(os.path.join(OUT, "verdict.json"), "w"), indent=2)
 print("  wrote outputs/verdict.json")
+
+# The block above is retained as the frozen judge-regression check. It is not
+# treated as paper-level evidence. The rigorous child contract below controls
+# this process's exit status.
+import subprocess
+rigorous = subprocess.run(
+    [sys.executable, os.path.join(os.path.dirname(__file__), "verify_dual_contracts.py")]
+)
+if rigorous.returncode:
+    raise SystemExit(rigorous.returncode)

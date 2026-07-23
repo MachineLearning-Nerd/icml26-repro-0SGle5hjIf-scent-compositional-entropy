@@ -1,0 +1,21 @@
+{
+  "claim_id": 1,
+  "paper_scope": "Lemma 3.1 and the following log-domain implementation paragraph",
+  "inputs": {
+    "alpha": "strictly positive scalar",
+    "nu_prev": "finite real scalar",
+    "s": "finite real scalar",
+    "bregman_generator": "phi(nu)=exp(-nu)"
+  },
+  "verdict_rule": {
+    "VERIFIED": "The stable formula agrees with independently minimized proximal objectives and high-precision formula evaluations within declared tolerances, remains finite on the declared stress grid, and rejects the naive exp-then-log negative control.",
+    "FALSIFIED": "Any required identity, optimality, stability, independent-checker, or negative-control predicate fails.",
+    "BLOCKED": "Required source or executable evidence is unavailable."
+  },
+  "tolerances": {
+    "argmin_abs_error": 2e-7,
+    "objective_gap_abs": 1e-10,
+    "high_precision_abs_error": 5e-12
+  }
+}
+
