@@ -261,6 +261,13 @@ class BalancedBatchSampler(Sampler[int]):
 def load_binary_dataset(name: str) -> tuple[np.ndarray, ...]:
     dataset_class = datasets.CIFAR10 if name == "cifar10" else datasets.CIFAR100
     archive, acquisition = ensure_archive(name, dataset_class)
+    print(
+        f"CLAIM6_ARCHIVE dataset={name} bytes={acquisition['archive_bytes']} "
+        f"md5={acquisition['archive_md5']} "
+        f"sha256={acquisition['archive_sha256']} "
+        f"reused={acquisition['archive_reused']}",
+        flush=True,
+    )
     try:
         train = dataset_class(root=CACHE_DIR, train=True, download=False)
     except RuntimeError:
@@ -344,7 +351,7 @@ def pretrain_backbone(
                 optimizer.step()
             print(
                 f"CLAIM6_PRETRAIN dataset={dataset_name} epoch={epoch + 1}/{epochs} "
-                f"loss={float(loss):.8f}",
+                f"loss={float(loss.detach()):.8f}",
                 flush=True,
             )
         CACHE_DIR.mkdir(parents=True, exist_ok=True)
@@ -500,6 +507,14 @@ def run_dataset(
         "test_positive": 5_000,
     }:
         raise RuntimeError(f"paper data contract violated: {counts}")
+    print(
+        f"CLAIM6_COUNTS dataset={dataset_name} "
+        f"train_negative={counts['train_negative']} "
+        f"train_positive={counts['train_positive']} "
+        f"test_negative={counts['test_negative']} "
+        f"test_positive={counts['test_positive']}",
+        flush=True,
+    )
 
     backbone, pretrain_seconds, reused = pretrain_backbone(
         dataset_name, train_images, train_targets, config
@@ -776,6 +791,7 @@ def main() -> int:
     print("CLAIM 6 CIFAR PARTIAL-AUC CONTRACT")
     print("=" * 78)
     print(json.dumps(checker, sort_keys=True))
+    print("CLAIM6_TIMINGS=" + json.dumps(timings, sort_keys=True))
     print(f"NEGATIVE_CONTROL_REJECTED={negative_rejected}")
     print(f"RUNTIME_SECONDS={runtime:.3f}")
     print(f"CLAIM6_VERDICT={verdict}")

@@ -11,6 +11,6 @@ evaluation mode; the released fine-tuning script calls `model.train()` and
 therefore mutates BatchNorm running statistics despite disabling backbone
 gradients.
 
-The current node is explicitly a one-epoch runtime profile. It cannot support
-any Claim 6 verdict; only a descendant with the complete configuration may do
-so.
+The paper does not state its evaluation cadence. This reproduction evaluates
+the exact objective and pAUC at epochs 0, 10, 20, 30, 40, 50, and 60; training
+still executes all 60 epochs.

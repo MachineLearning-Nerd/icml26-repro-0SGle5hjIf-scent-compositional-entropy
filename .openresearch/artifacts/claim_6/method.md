@@ -11,7 +11,8 @@ Because the backbone is frozen, each epoch's augmented backbone features are
 computed once and shared across method variants for paired fairness. BatchNorm
 is kept in evaluation mode; allowing running statistics to change would violate
 the paper's statement that the backbone is frozen. Exact unaugmented training
-objectives and test pAUC are evaluated at every recorded epoch.
+objectives and test pAUC are evaluated before fine-tuning and every 10 epochs
+through the epoch-60 endpoint.
 
 The independent checker reduces only raw CSV. Final SCENT-minus-SOX differences
 are paired by seed and bootstrapped. A 0.002 absolute equivalence margin was

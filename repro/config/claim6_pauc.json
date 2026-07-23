@@ -1,14 +1,14 @@
 {
-  "mode": "profile",
-  "datasets": ["cifar10"],
-  "taus": [0.1],
+  "mode": "full",
+  "datasets": ["cifar10", "cifar100"],
+  "taus": [0.05, 0.1],
   "methods": ["SCENT", "SOX"],
-  "seeds": [79],
+  "seeds": [79, 2024, 2602],
   "pretrain_seed": 0,
-  "pretrain_epochs": 1,
-  "finetune_epochs": 1,
+  "pretrain_epochs": 60,
+  "finetune_epochs": 60,
   "batch_size": 64,
   "margin": 0.5,
   "equivalence_margin": 0.002,
-  "evaluation_every": 1
+  "evaluation_every": 10
 }
