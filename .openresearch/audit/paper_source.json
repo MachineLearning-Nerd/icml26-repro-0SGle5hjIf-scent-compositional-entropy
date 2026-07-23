@@ -1,0 +1,20 @@
+{
+  "arxiv_id": "2602.02877v2",
+  "retrieved_at": "2026-07-23T00:00:00+05:30",
+  "retrieval_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 OpenResearch-Reproduction/1.0",
+  "html": {
+    "url": "https://ar5iv.labs.arxiv.org/html/2602.02877",
+    "sha256": "00670f81db728e76f35ebee5a56019ee9382370bfc43d64d69eddbe74a8adab6",
+    "bytes": 1260555
+  },
+  "source_archive": {
+    "url": "https://export.arxiv.org/e-print/2602.02877v2",
+    "sha256": "be5a8c38a06b2476579e48e9036df67c3daf242ad06c6ec949864aebfcd20fba",
+    "bytes": 2404095
+  },
+  "official_code": {
+    "url": "https://github.com/Optimization-AI/SCENT",
+    "git_sha": "cfbf17925754f18855f26715adeec4773aa0591d"
+  }
+}
+
