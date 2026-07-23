@@ -50,9 +50,34 @@ HYPERPARAMETERS = {
     ("cifar10", 0.05, "SOX"): {"lr": 1e-2, "gamma": 0.9},
 }
 
+DATA_MIRRORS = {
+    "cifar10": {
+        "url": (
+            "https://scidata.sjtu.edu.cn/records/h0yqt-ta634/files/"
+            "cifar-10-python.tar.gz?download=1"
+        ),
+        "record": "https://scidata.sjtu.edu.cn/records/h0yqt-ta634",
+    },
+    "cifar100": {
+        "url": (
+            "https://scidata.sjtu.edu.cn/records/xk2s3-v1e12/files/"
+            "cifar-100-python.tar.gz?download=1"
+        ),
+        "record": "https://scidata.sjtu.edu.cn/records/xk2s3-v1e12",
+    },
+}
+
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def md5(path: Path) -> str:
+    digest = hashlib.md5(usedforsecurity=False)
     with path.open("rb") as handle:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
@@ -153,9 +178,20 @@ class BalancedBatchSampler(Sampler[int]):
 
 
 def load_binary_dataset(name: str) -> tuple[np.ndarray, ...]:
-    dataset_class = datasets.CIFAR10 if name == "cifar10" else datasets.CIFAR100
+    base_class = datasets.CIFAR10 if name == "cifar10" else datasets.CIFAR100
+    dataset_class = type(
+        f"Checksummed{base_class.__name__}",
+        (base_class,),
+        {"url": DATA_MIRRORS[name]["url"]},
+    )
     train = dataset_class(root=CACHE_DIR, train=True, download=True)
     test = dataset_class(root=CACHE_DIR, train=False, download=True)
+    archive = CACHE_DIR / base_class.filename
+    archive_md5 = md5(archive)
+    if archive_md5 != base_class.tgz_md5:
+        raise RuntimeError(
+            f"{name} archive MD5 mismatch: {archive_md5} != {base_class.tgz_md5}"
+        )
     train_images = np.asarray(train.data)
     train_classes = np.asarray(train.targets)
     test_images = np.asarray(test.data)
@@ -177,6 +213,14 @@ def load_binary_dataset(name: str) -> tuple[np.ndarray, ...]:
         train_targets[retained],
         test_images,
         test_targets,
+        {
+            "mirror_url": DATA_MIRRORS[name]["url"],
+            "record_url": DATA_MIRRORS[name]["record"],
+            "archive": base_class.filename,
+            "archive_bytes": archive.stat().st_size,
+            "archive_md5": archive_md5,
+            "canonical_torchvision_md5": base_class.tgz_md5,
+        },
     )
 
 
@@ -368,9 +412,13 @@ def evaluate(
 def run_dataset(
     dataset_name: str, config: dict
 ) -> tuple[list[dict[str, object]], dict[str, object]]:
-    train_images, train_targets, test_images, test_targets = load_binary_dataset(
-        dataset_name
-    )
+    (
+        train_images,
+        train_targets,
+        test_images,
+        test_targets,
+        acquisition,
+    ) = load_binary_dataset(dataset_name)
     counts = {
         "train_negative": int(np.sum(train_targets == 0)),
         "train_positive": int(np.sum(train_targets == 1)),
@@ -505,6 +553,7 @@ def run_dataset(
                     )
 
     timing = {
+        "acquisition": acquisition,
         "counts": counts,
         "pretrain_seconds": pretrain_seconds,
         "pretrain_checkpoint_reused": reused,

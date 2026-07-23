@@ -21,6 +21,15 @@ its pAUC README instructs users to install public `libauc==1.2.0`, whose wheel
 does not contain that module. The reproduction ports the vendored source
 directly instead of silently substituting a different published loss.
 
+The canonical Toronto archive endpoint stalled at 0.0% for 16.5 minutes in
+local run `cb02789f-bcda-4b9a-9850-49284820abe9`. The acquisition-only child
+uses the open-data records at
+`https://scidata.sjtu.edu.cn/records/h0yqt-ta634` (CIFAR-10) and
+`https://scidata.sjtu.edu.cn/records/xk2s3-v1e12` (CIFAR-100). The verifier
+refuses to continue unless the downloaded archives match torchvision's
+canonical MD5 values `c58f30108f718f92721af3b95e74349a` and
+`eb9058c3a382ffc7106e4002c42a8d85`, respectively.
+
 The exact prose claim is that SOX and SCENT obtain the best training-loss
 results and SCENT is slightly better than SOX. Figure-vector extraction gives
 the following epoch-60 SCENT-minus-SOX mean differences:
