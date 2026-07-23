@@ -1,0 +1,14 @@
+{
+  "mode": "profile",
+  "datasets": ["cifar10"],
+  "taus": [0.1],
+  "methods": ["SCENT", "SOX"],
+  "seeds": [79],
+  "pretrain_seed": 0,
+  "pretrain_epochs": 1,
+  "finetune_epochs": 1,
+  "batch_size": 64,
+  "margin": 0.5,
+  "equivalence_margin": 0.002,
+  "evaluation_every": 1
+}

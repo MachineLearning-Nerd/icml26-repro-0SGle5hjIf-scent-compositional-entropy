@@ -100,6 +100,7 @@ for rigorous_script in (
     "verify_dual_contracts.py",
     "verify_rate_kappa.py",
     "verify_claim5_feasibility.py",
+    "verify_claim6_pauc.py",
 ):
     rigorous = subprocess.run(
         [sys.executable, os.path.join(os.path.dirname(__file__), rigorous_script)]

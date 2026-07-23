@@ -1,0 +1,18 @@
+{
+  "claim_id": 6,
+  "paper_scope": "training CERM surrogate loss on imbalanced CIFAR-10 and CIFAR-100 at tau 0.05 and 0.1",
+  "methods": ["SCENT", "SOX"],
+  "datasets": ["cifar10", "cifar100"],
+  "taus": [0.05, 0.1],
+  "seeds": 3,
+  "pretrain_epochs": 60,
+  "finetune_epochs": 60,
+  "batch_size": 64,
+  "margin_from_paper_text": 0.5,
+  "paired_endpoint_difference": "SCENT minus SOX; lower is better",
+  "equivalence_margin": 0.002,
+  "verified_if": "every setting is either superior (bootstrap upper bound below zero) or equivalent (bootstrap interval inside +/-0.002)",
+  "falsified_if": "any setting has bootstrap lower bound above +0.002",
+  "blocked_if": "the complete protocol runs but at least one setting remains statistically unresolved",
+  "valid_verdicts": ["VERIFIED", "FALSIFIED", "BLOCKED"]
+}
