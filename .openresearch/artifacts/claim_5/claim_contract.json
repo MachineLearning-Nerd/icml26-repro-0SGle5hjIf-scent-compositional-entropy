@@ -1,0 +1,23 @@
+{
+  "claim_id": 5,
+  "paper_scope": "Glint360K and TreeOfLife-10M training and validation cross-entropy curves",
+  "minimum_methods": ["SCENT", "SOX", "U-max", "BSGD"],
+  "datasets": ["Glint360K", "TreeOfLife-10M"],
+  "epochs": 50,
+  "batch_size": 128,
+  "seeds": 3,
+  "valid_verdicts": ["VERIFIED", "FALSIFIED", "BLOCKED"],
+  "blocked_predicates": [
+    "the official raw-data pipeline exceeds available storage",
+    "the official SCENT repository publishes neither extracted features nor release assets",
+    "a public Hugging Face search finds no extracted feature dataset",
+    "the minimum exact protocol exceeds one billion example visits"
+  ],
+  "prohibited_substitutions": [
+    "synthetic matrices",
+    "dataset subsets",
+    "fewer datasets",
+    "plain SGD in place of named baselines",
+    "single-seed qualitative curves"
+  ]
+}

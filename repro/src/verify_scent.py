@@ -96,7 +96,11 @@ print("  wrote outputs/verdict.json")
 # this process's exit status.
 import subprocess
 
-for rigorous_script in ("verify_dual_contracts.py", "verify_rate_kappa.py"):
+for rigorous_script in (
+    "verify_dual_contracts.py",
+    "verify_rate_kappa.py",
+    "verify_claim5_feasibility.py",
+):
     rigorous = subprocess.run(
         [sys.executable, os.path.join(os.path.dirname(__file__), rigorous_script)]
     )
