@@ -53,17 +53,29 @@ HYPERPARAMETERS = {
 DATA_MIRRORS = {
     "cifar10": {
         "url": (
-            "https://scidata.sjtu.edu.cn/records/h0yqt-ta634/files/"
-            "cifar-10-python.tar.gz?download=1"
+            "https://huggingface.co/Peyiloo/peyiloo/resolve/"
+            "aca76516f836b3e9cfccbd7dc6a8fcca63a63607/"
+            "cifar-10-python.tar.gz"
         ),
-        "record": "https://scidata.sjtu.edu.cn/records/h0yqt-ta634",
+        "record": (
+            "https://huggingface.co/Peyiloo/peyiloo/blob/"
+            "aca76516f836b3e9cfccbd7dc6a8fcca63a63607/"
+            "cifar-10-python.tar.gz"
+        ),
+        "sha256": "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce",
     },
     "cifar100": {
         "url": (
-            "https://scidata.sjtu.edu.cn/records/xk2s3-v1e12/files/"
-            "cifar-100-python.tar.gz?download=1"
+            "https://huggingface.co/datasets/nakroy/cifar100-python/resolve/"
+            "201a32345d2c6b970e1a36c582930c83e09c96d2/"
+            "cifar-100-python.tar.gz"
         ),
-        "record": "https://scidata.sjtu.edu.cn/records/xk2s3-v1e12",
+        "record": (
+            "https://huggingface.co/datasets/nakroy/cifar100-python/blob/"
+            "201a32345d2c6b970e1a36c582930c83e09c96d2/"
+            "cifar-100-python.tar.gz"
+        ),
+        "sha256": "85cd44d02ba6437773c5bbd22e183051d648de2e7d6b014e1ef29b855ba677a7",
     },
 }
 
@@ -188,9 +200,15 @@ def load_binary_dataset(name: str) -> tuple[np.ndarray, ...]:
     test = dataset_class(root=CACHE_DIR, train=False, download=True)
     archive = CACHE_DIR / base_class.filename
     archive_md5 = md5(archive)
+    archive_sha256 = sha256(archive)
     if archive_md5 != base_class.tgz_md5:
         raise RuntimeError(
             f"{name} archive MD5 mismatch: {archive_md5} != {base_class.tgz_md5}"
+        )
+    if archive_sha256 != DATA_MIRRORS[name]["sha256"]:
+        raise RuntimeError(
+            f"{name} archive SHA-256 mismatch: "
+            f"{archive_sha256} != {DATA_MIRRORS[name]['sha256']}"
         )
     train_images = np.asarray(train.data)
     train_classes = np.asarray(train.targets)
@@ -219,7 +237,9 @@ def load_binary_dataset(name: str) -> tuple[np.ndarray, ...]:
             "archive": base_class.filename,
             "archive_bytes": archive.stat().st_size,
             "archive_md5": archive_md5,
+            "archive_sha256": archive_sha256,
             "canonical_torchvision_md5": base_class.tgz_md5,
+            "canonical_hf_datasets_sha256": DATA_MIRRORS[name]["sha256"],
         },
     )
 

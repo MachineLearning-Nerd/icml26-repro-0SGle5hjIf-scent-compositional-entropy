@@ -22,13 +22,18 @@ does not contain that module. The reproduction ports the vendored source
 directly instead of silently substituting a different published loss.
 
 The canonical Toronto archive endpoint stalled at 0.0% for 16.5 minutes in
-local run `cb02789f-bcda-4b9a-9850-49284820abe9`. The acquisition-only child
-uses the open-data records at
-`https://scidata.sjtu.edu.cn/records/h0yqt-ta634` (CIFAR-10) and
-`https://scidata.sjtu.edu.cn/records/xk2s3-v1e12` (CIFAR-100). The verifier
-refuses to continue unless the downloaded archives match torchvision's
-canonical MD5 values `c58f30108f718f92721af3b95e74349a` and
-`eb9058c3a382ffc7106e4002c42a8d85`, respectively.
+local run `cb02789f-bcda-4b9a-9850-49284820abe9`. The SJTU mirror then
+terminated an incomplete transfer in run `ec4d9f56-fe5e-484e-8389-70f986838467`;
+torchvision rejected it before extraction.
+
+The final acquisition child pins CIFAR-10 to HF revision
+`Peyiloo/peyiloo@aca76516f836b3e9cfccbd7dc6a8fcca63a63607` and CIFAR-100
+to `nakroy/cifar100-python@201a32345d2c6b970e1a36c582930c83e09c96d2`.
+The verifier refuses to continue unless the archives simultaneously match
+torchvision's canonical MD5 values `c58f30108f718f92721af3b95e74349a`
+and `eb9058c3a382ffc7106e4002c42a8d85`, and the independently recorded HF
+datasets SHA-256 values `6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce`
+and `85cd44d02ba6437773c5bbd22e183051d648de2e7d6b014e1ef29b855ba677a7`.
 
 The exact prose claim is that SOX and SCENT obtain the best training-loss
 results and SCENT is slightly better than SOX. Figure-vector extraction gives
