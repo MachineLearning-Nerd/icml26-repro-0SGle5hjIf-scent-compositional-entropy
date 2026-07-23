@@ -90,3 +90,12 @@ for k_, r in results.items():
 print(f"\n  {passed}/{len(results)} claims verified.")
 json.dump(results, open(os.path.join(OUT, "verdict.json"), "w"), indent=2)
 print("  wrote outputs/verdict.json")
+
+# The legacy block above is a frozen regression check only. This child suite
+# controls the process exit status for claims 2 and 4.
+import subprocess
+rigorous = subprocess.run(
+    [sys.executable, os.path.join(os.path.dirname(__file__), "verify_rate_kappa.py")]
+)
+if rigorous.returncode:
+    raise SystemExit(rigorous.returncode)

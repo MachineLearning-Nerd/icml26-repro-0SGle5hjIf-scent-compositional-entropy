@@ -1,0 +1,24 @@
+{
+  "claim_id": 2,
+  "paper_scope": "Theorem 3.6 under Assumption 3.2",
+  "problem": {
+    "anchors": 96,
+    "inner_support": 256,
+    "dimension": 12,
+    "domain": "[-1,1]^12",
+    "horizons": [512, 2048, 8192, 32768],
+    "seeds_per_horizon": 20
+  },
+  "required_predicates": [
+    "all risks are convex, differentiable, and bounded on W",
+    "the horizon-dependent dual step satisfies the theorem inequality with rho=1",
+    "the exact convex optimum has projected KKT residual below 1e-7",
+    "the 95% bootstrap upper endpoint of the log-log gap slope is at most -0.20",
+    "the largest-horizon gap confidence interval is strictly below the smallest-horizon interval",
+    "sqrt(T) times the mean gap never exceeds three times its first-horizon value",
+    "the no-primal-update negative control is rejected",
+    "the independent raw-data checker passes"
+  ],
+  "verdicts": ["VERIFIED", "FALSIFIED", "BLOCKED"]
+}
+
