@@ -1,0 +1,16 @@
+{
+  "claim_id": 3,
+  "paper_scope": "Lemma 3.3 under Assumption 3.2(ii)",
+  "preconditions": {
+    "risk": "s_i(w;zeta) is in [c0,c1] for every tested update",
+    "initialization": "nu_0 is in [c0,c1]^n",
+    "step_size": "alpha_t is strictly positive"
+  },
+  "quantifier": "every coordinate and every iteration",
+  "verdict_rule": {
+    "VERIFIED": "No interval or one-step convex-hull breach occurs without clipping across all declared updates, the independent high-precision checker passes, and unprojected Euclidean SGD is rejected by the negative control.",
+    "FALSIFIED": "Any required invariant, independent-checker, or negative-control predicate fails.",
+    "BLOCKED": "Required source or executable evidence is unavailable."
+  }
+}
+

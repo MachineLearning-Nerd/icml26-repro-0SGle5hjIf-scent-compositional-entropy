@@ -91,11 +91,14 @@ print(f"\n  {passed}/{len(results)} claims verified.")
 json.dump(results, open(os.path.join(OUT, "verdict.json"), "w"), indent=2)
 print("  wrote outputs/verdict.json")
 
-# The legacy block above is a frozen regression check only. This child suite
-# controls the process exit status for claims 2 and 4.
+# The block above is retained as the frozen judge-regression check. It is not
+# treated as paper-level evidence. Both rigorous child contracts below control
+# this process's exit status.
 import subprocess
-rigorous = subprocess.run(
-    [sys.executable, os.path.join(os.path.dirname(__file__), "verify_rate_kappa.py")]
-)
-if rigorous.returncode:
-    raise SystemExit(rigorous.returncode)
+
+for rigorous_script in ("verify_dual_contracts.py", "verify_rate_kappa.py"):
+    rigorous = subprocess.run(
+        [sys.executable, os.path.join(os.path.dirname(__file__), rigorous_script)]
+    )
+    if rigorous.returncode:
+        raise SystemExit(rigorous.returncode)
