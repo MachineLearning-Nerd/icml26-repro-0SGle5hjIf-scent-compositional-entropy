@@ -9,3 +9,7 @@ silently. Most importantly, the “faster factor” compares theoretical upper
 bounds and is not a universal pointwise guarantee that SPMD beats optimally
 tuned SGD on every distribution and iteration.
 
+The paper's separate qualitative statement that Figure 1's error ratio is
+independent of the Gaussian mean is reported numerically, but it does not gate
+the verdict for the imported theorem/factor claim. A mismatch on that
+sensitivity is a divergence, not evidence for the bound claim.

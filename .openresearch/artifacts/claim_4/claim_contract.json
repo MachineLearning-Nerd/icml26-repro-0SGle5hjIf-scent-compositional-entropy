@@ -12,10 +12,11 @@
     "sample kappa agrees with exp(sigma^2) within 1.5%",
     "SPMD-to-SGD tail error ratio is nonincreasing with kappa by Spearman correlation <= -0.5 for both means",
     "at sigma=1 the SPMD 95% ratio interval lies below one for both means",
-    "ratios for the two means agree within 50% at each sigma",
     "the legacy raw-logit kappa negative control is rejected",
     "the independent raw-data checker passes"
   ],
+  "reported_but_not_verdict_gating": [
+    "The Figure 1 discussion's qualitative mean-invariance observation is reported as a separate sensitivity result because it is not part of Theorem 4.3, Theorem 4.5, or the imported bound-factor claim."
+  ],
   "verdicts": ["VERIFIED", "FALSIFIED", "BLOCKED"]
 }
-
