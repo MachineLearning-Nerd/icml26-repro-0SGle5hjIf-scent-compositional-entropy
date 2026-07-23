@@ -26,25 +26,73 @@ def main() -> int:
     with Path(sys.argv[2]).open(newline="") as handle:
         rows = list(csv.DictReader(handle))
 
-    expected_rows = (
-        len(config["datasets"])
-        * len(config["taus"])
+    imported_datasets = set(
+        config.get("imported_final_metrics", {}).get("datasets", [])
+    )
+    run_datasets = set(config.get("run_datasets", config["datasets"]))
+    all_datasets = set(config["datasets"])
+    source_partition_valid = (
+        imported_datasets.isdisjoint(run_datasets)
+        and imported_datasets | run_datasets == all_datasets
+    )
+    expected_rows = sum(
+        len(config["taus"])
         * len(config["methods"])
         * len(config["seeds"])
-        * (config["finetune_epochs"] // config["evaluation_every"] + 1)
+        * (
+            1
+            if dataset in imported_datasets
+            else config["finetune_epochs"] // config["evaluation_every"] + 1
+        )
+        for dataset in config["datasets"]
     )
     numeric_finite = all(
         np.isfinite(float(row[key]))
         for row in rows
         for key in ("train_objective", "test_pauc")
     )
-    complete = len(rows) == expected_rows and numeric_finite
+    keys = [
+        (
+            row["dataset"],
+            float(row["tau"]),
+            row["method"],
+            int(row["seed"]),
+            int(row["epoch"]),
+        )
+        for row in rows
+    ]
+    expected_keys = {
+        (dataset, float(tau), method, int(seed), epoch)
+        for dataset in config["datasets"]
+        for tau in config["taus"]
+        for method in config["methods"]
+        for seed in config["seeds"]
+        for epoch in (
+            [config["finetune_epochs"]]
+            if dataset in imported_datasets
+            else range(
+                0,
+                config["finetune_epochs"] + 1,
+                config["evaluation_every"],
+            )
+        )
+    }
+    complete = (
+        source_partition_valid
+        and len(rows) == expected_rows
+        and len(set(keys)) == len(keys)
+        and set(keys) == expected_keys
+        and numeric_finite
+    )
     output: dict[str, object] = {
         "checker": "independent_claim6_raw_csv_reduction",
         "mode": config["mode"],
         "rows": len(rows),
         "expected_rows": expected_rows,
         "complete": complete,
+        "source_partition_valid": source_partition_valid,
+        "imported_final_datasets": sorted(imported_datasets),
+        "run_datasets": sorted(run_datasets),
     }
 
     if config["mode"] == "profile":
@@ -63,6 +111,11 @@ def main() -> int:
         print(json.dumps(output, sort_keys=True))
         return 0 if output["passed"] else 1
 
+    if not complete:
+        output.update({"verdict": "BLOCKED", "passed": False})
+        print(json.dumps(output, sort_keys=True))
+        return 1
+
     final_epoch = config["finetune_epochs"]
     grouped: dict[tuple[str, float, int], dict[str, float]] = defaultdict(dict)
     for row in rows:
@@ -71,6 +124,7 @@ def main() -> int:
             grouped[key][row["method"]] = float(row["train_objective"])
 
     settings: dict[str, object] = {}
+    pauc_settings: dict[str, object] = {}
     statuses: list[str] = []
     margin = float(config["equivalence_margin"])
     for dataset in config["datasets"]:
@@ -98,6 +152,48 @@ def main() -> int:
                 "bootstrap95": [low, high],
                 "status": status,
             }
+            pauc_differences = np.array(
+                [
+                    float(
+                        next(
+                            row["test_pauc"]
+                            for row in rows
+                            if row["dataset"] == dataset
+                            and float(row["tau"]) == float(tau)
+                            and int(row["seed"]) == int(seed)
+                            and row["method"] == "SCENT"
+                            and int(row["epoch"]) == final_epoch
+                        )
+                    )
+                    - float(
+                        next(
+                            row["test_pauc"]
+                            for row in rows
+                            if row["dataset"] == dataset
+                            and float(row["tau"]) == float(tau)
+                            and int(row["seed"]) == int(seed)
+                            and row["method"] == "SOX"
+                            and int(row["epoch"]) == final_epoch
+                        )
+                    )
+                    for seed in config["seeds"]
+                ]
+            )
+            pauc_low, pauc_high = paired_interval(pauc_differences)
+            if pauc_low > 0:
+                pauc_status = "SUPERIOR"
+            elif pauc_low >= -margin and pauc_high <= margin:
+                pauc_status = "EQUIVALENT"
+            elif pauc_high < -margin:
+                pauc_status = "INFERIOR"
+            else:
+                pauc_status = "UNRESOLVED"
+            pauc_settings[f"{dataset}:tau={tau}"] = {
+                "paired_differences_scent_minus_sox": pauc_differences.tolist(),
+                "mean_difference": float(pauc_differences.mean()),
+                "bootstrap95": [pauc_low, pauc_high],
+                "status": pauc_status,
+            }
 
     if complete and all(status in {"SUPERIOR", "EQUIVALENT"} for status in statuses):
         verdict = "VERIFIED"
@@ -109,6 +205,7 @@ def main() -> int:
         {
             "equivalence_margin": margin,
             "settings": settings,
+            "secondary_test_pauc_settings": pauc_settings,
             "verdict": verdict,
             "passed": complete,
         }

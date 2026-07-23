@@ -10,9 +10,14 @@
   "finetune_epochs": 60,
   "batch_size": 64,
   "margin_from_paper_text": 0.5,
-  "paired_endpoint_difference": "SCENT minus SOX; lower is better",
+  "primary_paired_endpoint_difference": "epoch-60 training objective, SCENT minus SOX; lower is better, matching the paper's exact prose claim",
+  "secondary_paired_endpoint_difference": "epoch-60 test partial AUC, SCENT minus SOX; higher is better, reported to answer the judge's AUC criticism but not substituted for the source claim",
   "equivalence_margin": 0.002,
   "evaluation_epochs": [0, 10, 20, 30, 40, 50, 60],
+  "execution_partition": {
+    "cifar10": "final rows imported from provenance-bound parent run 292e041e-3234-4b9e-b504-61b4894848c4, which logged all checkpoints 10..60 before cancellation",
+    "cifar100": "executed live by the continuation child"
+  },
   "verified_if": "every setting is either superior (bootstrap upper bound below zero) or equivalent (bootstrap interval inside +/-0.002)",
   "falsified_if": "any setting has bootstrap lower bound above +0.002",
   "blocked_if": "the complete protocol runs but at least one setting remains statistically unresolved",

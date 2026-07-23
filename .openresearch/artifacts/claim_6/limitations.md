@@ -14,3 +14,10 @@ gradients.
 The paper does not state its evaluation cadence. This reproduction evaluates
 the exact objective and pAUC at epochs 0, 10, 20, 30, 40, 50, and 60; training
 still executes all 60 epochs.
+
+The two datasets execute across two CPU jobs because the measured combined
+runtime exceeded the first job's 12-hour ceiling. CIFAR-10 final rows are
+traceable to the cancelled parent run and cryptographically bound in the
+continuation. Intermediate CIFAR-10 checkpoints remain in the parent run log;
+only the final rows consumed by the claim checker are copied into the
+continuation artifact.

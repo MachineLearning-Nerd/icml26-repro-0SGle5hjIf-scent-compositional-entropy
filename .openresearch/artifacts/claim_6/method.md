@@ -19,3 +19,15 @@ are paired by seed and bootstrapped. A 0.002 absolute equivalence margin was
 fixed before running: it is slightly larger than the largest vector-extracted
 paper gap (0.0012841), but an order of magnitude smaller than the plot's 0.025
 tick spacing.
+
+The first full run completed every CIFAR-10 checkpoint but was cancelled after
+8h15m when its 12-hour ceiling became certain to interrupt CIFAR-100. The
+continuation imports only the 12 CIFAR-10 epoch-60 rows used by the checker.
+Their CSV and provenance JSON are SHA-256 pinned; the source log independently
+contained exactly 72/72 unique printed checkpoint rows. CIFAR-100 is executed
+live with the unchanged protocol. Splitting execution this way changes neither
+the data, model, optimizer, seeds, nor comparison contract.
+
+The paper's exact prose statement concerns training loss, so that remains the
+primary verdict metric. Test partial AUC is reduced independently as secondary
+evidence and is never substituted for the source claim.

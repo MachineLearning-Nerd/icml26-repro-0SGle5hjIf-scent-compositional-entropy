@@ -674,6 +674,61 @@ def invoke_checker(metrics: Path, output_path: Path) -> tuple[int, dict]:
     return process.returncode, payload
 
 
+def load_imported_final_rows(
+    config: dict[str, object],
+) -> tuple[list[dict[str, object]], dict[str, object]]:
+    imported = config.get("imported_final_metrics")
+    if not imported:
+        return [], {}
+    metrics_path = ROOT / str(imported["path"])
+    provenance_path = ROOT / str(imported["provenance_path"])
+    if sha256(metrics_path) != imported["sha256"]:
+        raise RuntimeError("imported final metrics SHA-256 mismatch")
+    if sha256(provenance_path) != imported["provenance_sha256"]:
+        raise RuntimeError("imported provenance SHA-256 mismatch")
+    provenance = json.loads(provenance_path.read_text())
+    if provenance["run_id"] != imported["run_id"]:
+        raise RuntimeError("imported run provenance mismatch")
+    with metrics_path.open(newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    expected = {
+        (dataset, float(tau), method, int(seed), int(config["finetune_epochs"]))
+        for dataset in imported["datasets"]
+        for tau in config["taus"]
+        for method in config["methods"]
+        for seed in config["seeds"]
+    }
+    observed = {
+        (
+            row["dataset"],
+            float(row["tau"]),
+            row["method"],
+            int(row["seed"]),
+            int(row["epoch"]),
+        )
+        for row in rows
+    }
+    if len(rows) != len(expected) or observed != expected:
+        raise RuntimeError(
+            f"imported final metrics incomplete: rows={len(rows)} "
+            f"expected={len(expected)} unique={len(observed)}"
+        )
+    if not all(
+        math.isfinite(float(row[key]))
+        for row in rows
+        for key in ("train_objective", "test_pauc")
+    ):
+        raise RuntimeError("imported final metrics contain non-finite values")
+    print(
+        "CLAIM6_IMPORTED_FINALS "
+        f"run_id={provenance['run_id']} rows={len(rows)} "
+        f"complete_checkpoint_rows={provenance['extraction']['complete_checkpoint_rows']} "
+        f"log_export_sha256={provenance['log_export_sha256']}",
+        flush=True,
+    )
+    return rows, provenance
+
+
 def main() -> int:
     started = time.perf_counter()
     config = json.loads(CONFIG_PATH.read_text())
@@ -684,9 +739,11 @@ def main() -> int:
     torch.set_num_interop_threads(1)
     seed_everything(0)
 
-    all_rows: list[dict[str, object]] = []
-    timings: dict[str, object] = {}
-    for dataset_name in config["datasets"]:
+    all_rows, imported_provenance = load_imported_final_rows(config)
+    timings: dict[str, object] = {
+        "imported_final_metrics": imported_provenance
+    } if imported_provenance else {}
+    for dataset_name in config.get("run_datasets", config["datasets"]):
         dataset_rows, timing = run_dataset(dataset_name, config)
         all_rows.extend(dataset_rows)
         timings[dataset_name] = timing

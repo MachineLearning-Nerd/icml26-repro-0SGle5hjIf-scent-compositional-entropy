@@ -1,0 +1,27 @@
+{
+  "archive": {
+    "bytes": 170498071,
+    "md5": "c58f30108f718f92721af3b95e74349a",
+    "sha256": "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce"
+  },
+  "counts": {
+    "test_negative": 5000,
+    "test_positive": 5000,
+    "train_negative": 25000,
+    "train_positive": 5000
+  },
+  "experiment_id": "c42c9606-cdbc-4df4-898e-e5b567c49f1b",
+  "extraction": {
+    "complete_checkpoint_rows": 72,
+    "epochs": [10, 20, 30, 40, 50, 60],
+    "final_rows": 12,
+    "independent_unique_rows": 72,
+    "methods": ["SCENT", "SOX"],
+    "seeds": [79, 2024, 2602],
+    "taus": [0.05, 0.1]
+  },
+  "git_sha": "27ec15be9e115e7b03eb717d6921121ef14981d2",
+  "log_export_sha256": "fb4d0810bcbc6e9e1a816843a3284ccccd001b89edb310c05162d2a6c8da4170",
+  "run_id": "292e041e-3234-4b9e-b504-61b4894848c4",
+  "status": "cancelled_after_complete_cifar10"
+}
