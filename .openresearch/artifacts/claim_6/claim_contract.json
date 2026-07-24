@@ -16,7 +16,7 @@
   "evaluation_epochs": [0, 10, 20, 30, 40, 50, 60],
   "execution_partition": {
     "cifar10": "final rows imported from provenance-bound parent run 292e041e-3234-4b9e-b504-61b4894848c4, which logged all checkpoints 10..60 before cancellation",
-    "cifar100": "executed live by the continuation child"
+    "cifar100": "final rows imported from terminal provenance-bound seed shards ed1f67f8-ff8e-4c91-9470-a5dc4e2e6202, c2303e58-60e5-4448-b791-00efbac360e5, and 7164998a-5c26-42c1-bb26-9c396e1ec1d6; every shard independently required 28/28 rows and rejected its negative control"
   },
   "verified_if": "every setting is either superior (bootstrap upper bound below zero) or equivalent (bootstrap interval inside +/-0.002)",
   "falsified_if": "any setting has bootstrap lower bound above +0.002",
