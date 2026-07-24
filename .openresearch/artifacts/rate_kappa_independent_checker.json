@@ -1,0 +1,36 @@
+{
+  "checker": "independent_raw_csv_reduction",
+  "claim_2": {
+    "horizons": [
+      512,
+      2048,
+      8192,
+      32768
+    ],
+    "log_log_slope": -0.4544873280713293,
+    "mean_gaps": [
+      0.08673408695647926,
+      0.049281530699164244,
+      0.025951153283943103,
+      0.013150336429237344
+    ],
+    "minimum_step_condition_margin": 0.29336894763438714,
+    "passed": true,
+    "sqrt_t_mean_gap": [
+      1.9625683535024054,
+      2.2302274908564517,
+      2.348830267736027,
+      2.380465168383543
+    ]
+  },
+  "claim_4": {
+    "max_kappa_relative_error": 0.007273211135745837,
+    "passed": true,
+    "rows": 6,
+    "sigma_1_spmd_mean_below_sgd": true,
+    "spearman_kappa_vs_error_ratio": {
+      "-1.0": -1.0,
+      "-10.0": -1.0
+    }
+  }
+}

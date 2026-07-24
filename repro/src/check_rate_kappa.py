@@ -43,8 +43,13 @@ def main(root: Path) -> int:
                 "sample_kappa",
                 "kappa_relative_error",
                 "tail_error_ratio_mean",
+                "nu_star",
+                "c0",
             )
         }
+        numeric["tail_error_ratio_ci95_high"] = float(
+            json.loads(row["tail_error_ratio_ci95"])[1]
+        )
         by_mu[numeric["mu"]].append(numeric)
         max_kappa_error = max(max_kappa_error, numeric["kappa_relative_error"])
     correlations = {}
@@ -56,11 +61,42 @@ def main(root: Path) -> int:
                 [row["tail_error_ratio_mean"] for row in rows],
             ).statistic
         )
-        high_sigma &= rows[-1]["tail_error_ratio_mean"] < 1.0
+        high_sigma &= rows[-1]["tail_error_ratio_ci95_high"] < 1.0
+
+    factor_rows = list(csv.DictReader((root / "claim_4" / "bound_factors.csv").open()))
+    fixed_by_setting = {
+        (row["mu"], row["sigma"]): row for row in fixed_rows
+    }
+    factor_relative_errors = []
+    factors_by_mu: dict[float, list[tuple[float, float]]] = defaultdict(list)
+    for row in factor_rows:
+        source = fixed_by_setting[(row["mu"], row["sigma"])]
+        nu_star = float(source["nu_star"])
+        c0 = float(source["c0"])
+        expected = 1.0 / (abs(nu_star) * math.exp(nu_star - c0))
+        observed = float(row["spmd_to_sgd_bound_proportional_factor"])
+        factor_relative_errors.append(abs(observed - expected) / max(abs(expected), 1e-30))
+        factors_by_mu[float(row["mu"])].append(
+            (float(row["nu_star_minus_c0"]), observed)
+        )
+    factor_monotone = all(
+        all(
+            right[1] < left[1]
+            for left, right in zip(
+                sorted(rows),
+                sorted(rows)[1:],
+            )
+        )
+        for rows in factors_by_mu.values()
+    )
+    max_factor_relative_error = max(factor_relative_errors)
     c4_passed = bool(
         max_kappa_error < 0.015
         and all(value <= -0.5 for value in correlations.values())
         and high_sigma
+        and len(factor_rows) == len(fixed_rows)
+        and max_factor_relative_error < 1e-12
+        and factor_monotone
     )
 
     payload = {
@@ -78,7 +114,10 @@ def main(root: Path) -> int:
             "rows": len(fixed_rows),
             "max_kappa_relative_error": max_kappa_error,
             "spearman_kappa_vs_error_ratio": correlations,
-            "sigma_1_spmd_mean_below_sgd": high_sigma,
+            "sigma_1_spmd_ci_below_sgd": high_sigma,
+            "bound_factor_rows": len(factor_rows),
+            "max_bound_factor_relative_error": max_factor_relative_error,
+            "bound_factor_decreases_with_nu_star_minus_c0": factor_monotone,
         },
     }
     (root / "rate_kappa_independent_checker.json").write_text(

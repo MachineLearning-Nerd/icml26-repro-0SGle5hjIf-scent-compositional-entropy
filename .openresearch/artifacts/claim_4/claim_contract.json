@@ -12,7 +12,8 @@
     "sample kappa agrees with exp(sigma^2) within 1.5%",
     "SPMD-to-SGD tail error ratio is nonincreasing with kappa by Spearman correlation <= -0.5 for both means",
     "at sigma=1 the SPMD 95% ratio interval lies below one for both means",
-    "the legacy raw-logit kappa negative control is rejected",
+    "the independent checker recomputes 1/(|nu0-nu*| exp(nu*-c0)) from raw fixed-w rows within 1e-12 relative error and verifies that it decreases as nu*-c0 grows",
+    "the legacy raw-logit kappa and omitted-exponential bound-factor negative controls are rejected",
     "the independent raw-data checker passes"
   ],
   "reported_but_not_verdict_gating": [

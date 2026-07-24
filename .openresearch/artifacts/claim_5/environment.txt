@@ -1,0 +1,4 @@
+git_sha=887033a666997385d01e62c4cee363ff82f8f1ea
+python=3.12.11
+platform=macOS-26.5.2-arm64-arm-64bit
+logical_cpus=8

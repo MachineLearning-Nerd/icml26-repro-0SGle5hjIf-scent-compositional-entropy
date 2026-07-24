@@ -8,7 +8,8 @@ Appendix F.4. Compare tail-averaged squared errors, uncertainty across
 trajectories, dependence on kappa, and invariance to mean shifts.
 
 The theorem/SGD-bound comparison factor is also recomputed from every bounded
-empirical support. A separate checker reduces raw CSV evidence. The negative
-control repeats the old repository's error—using moments of raw logits instead
-of `z=exp(s)`—and must be rejected.
-
+empirical support. A separate checker reduces raw CSV evidence, independently
+recomputes `1/(|nu0-nu*| exp(nu*-c0))`, and requires the factor to decrease as
+`nu*-c0` grows. Negative controls repeat the old repository's raw-logit moment
+error and omit the exponential term from the bound factor; both must be
+rejected.

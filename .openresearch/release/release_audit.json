@@ -1,0 +1,108 @@
+{
+  "all_checked_protected_hashes_match": true,
+  "candidate_file_count_after_additive_upload": 18,
+  "judged_revision": "71993d9a3c56ee16bd8935f11d635988eb494f5b",
+  "logbook": {
+    "json_valid": true,
+    "missing_references": [],
+    "new_page_reachable": true,
+    "referenced_pages": [
+      "pages/index.md",
+      "pages/rigorous-update/page.md",
+      "pages/overview/page.md",
+      "pages/claims/page.md",
+      "pages/evidence/page.md",
+      "pages/verification-run/page.md",
+      "pages/conclusion/page.md"
+    ],
+    "unique_child_slugs": true
+  },
+  "missing_old_paths": [],
+  "old_file_count": 17,
+  "old_file_set_is_subset": true,
+  "passed": true,
+  "protected_local_files": {
+    "bucket-icon.svg": {
+      "actual": "d1c28fc0a4e07f2688d013f576cf76ffc422d278d56a52a82989e0b93b3b3964",
+      "expected": "d1c28fc0a4e07f2688d013f576cf76ffc422d278d56a52a82989e0b93b3b3964",
+      "match": true
+    },
+    "index.html": {
+      "actual": "8d8cd272fa959075423340867fef67b21dea63832b2ac0c1d7f6349ad3a607ba",
+      "expected": "8d8cd272fa959075423340867fef67b21dea63832b2ac0c1d7f6349ad3a607ba",
+      "match": true
+    },
+    "logbook.css": {
+      "actual": "64e1de4358c79ec0d5f2697c56f98258c025e992c94ad7b3b7801739222ca41d",
+      "expected": "64e1de4358c79ec0d5f2697c56f98258c025e992c94ad7b3b7801739222ca41d",
+      "match": true
+    },
+    "logbook.js": {
+      "actual": "69d73869184f936613668569980f31984be65229e77c4df4ba9604d3de70c02b",
+      "expected": "69d73869184f936613668569980f31984be65229e77c4df4ba9604d3de70c02b",
+      "match": true
+    },
+    "pages/claims/page.md": {
+      "actual": "d48d1cd427c4a7a5ba8d615dc6eb78c0ab10097b1638e95cf035594f675cb2c4",
+      "expected": "d48d1cd427c4a7a5ba8d615dc6eb78c0ab10097b1638e95cf035594f675cb2c4",
+      "match": true
+    },
+    "pages/conclusion/page.md": {
+      "actual": "03e7bb35bf8cfb49562a672c272d062c24acc4e7d500d6233bfcbe52ba6c5410",
+      "expected": "03e7bb35bf8cfb49562a672c272d062c24acc4e7d500d6233bfcbe52ba6c5410",
+      "match": true
+    },
+    "pages/evidence/page.md": {
+      "actual": "b2517a7a3bcbd4e7b5eea7574d84785a293ab0ff90c30088309c8a7cb431cfbc",
+      "expected": "b2517a7a3bcbd4e7b5eea7574d84785a293ab0ff90c30088309c8a7cb431cfbc",
+      "match": true
+    },
+    "pages/index.md": {
+      "actual": "1aede419a475a742dd6edbcceefac8f37f1c0e2c7691bdd2438b89a8bba726a7",
+      "expected": "1aede419a475a742dd6edbcceefac8f37f1c0e2c7691bdd2438b89a8bba726a7",
+      "match": true
+    },
+    "pages/overview/page.md": {
+      "actual": "95740229c346ee6883fee470f5b6fbb632fe9b5fe47689e0e6398304677f75c2",
+      "expected": "95740229c346ee6883fee470f5b6fbb632fe9b5fe47689e0e6398304677f75c2",
+      "match": true
+    },
+    "pages/verification-run/page.md": {
+      "actual": "fc57c2a0e478162dc91bc8e7981611ffd6dcfb34e7783dad789692a6c307c0f1",
+      "expected": "fc57c2a0e478162dc91bc8e7981611ffd6dcfb34e7783dad789692a6c307c0f1",
+      "match": true
+    },
+    "trackio-logo-light.png": {
+      "actual": "a6eb72253c0128ce79b526a86b7943eed37beec186b5f57ff6c1701d0e9ff596",
+      "expected": "a6eb72253c0128ce79b526a86b7943eed37beec186b5f57ff6c1701d0e9ff596",
+      "match": true
+    },
+    "trackio-logo.png": {
+      "actual": "3e3792061d4d095759da30d7cfe7f14b621901793cd4d677b61b2896f5bf472b",
+      "expected": "3e3792061d4d095759da30d7cfe7f14b621901793cd4d677b61b2896f5bf472b",
+      "match": true
+    },
+    "trackio-wordmark-dark.png": {
+      "actual": "71da94795855710d214801eb9b9b7b8898e9a8757abac0e22966a0531bbb2f4f",
+      "expected": "71da94795855710d214801eb9b9b7b8898e9a8757abac0e22966a0531bbb2f4f",
+      "match": true
+    }
+  },
+  "secret_scan": {
+    "findings": [],
+    "passed": true,
+    "patterns_checked": [
+      "aws_access_key",
+      "github_pat",
+      "hugging_face_token",
+      "openai_key",
+      "private_key"
+    ]
+  },
+  "space_id": "DineshAI/0SGle5hjIf",
+  "upload_allowlist": [
+    "logbook.json",
+    "pages/rigorous-update/page.md"
+  ],
+  "upload_is_text_only": true
+}

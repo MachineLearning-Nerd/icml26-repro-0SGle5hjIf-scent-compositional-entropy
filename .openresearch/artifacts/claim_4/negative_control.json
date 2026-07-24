@@ -1,0 +1,6 @@
+{
+  "control": "legacy_raw_logit_moment_ratio",
+  "correct_exp_risk_kappa": 2.71379004928171,
+  "rejected_as_expected": true,
+  "wrong_kappa": 1.999294083958346
+}

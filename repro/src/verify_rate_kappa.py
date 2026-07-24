@@ -426,6 +426,26 @@ def verify_claim_4(rng: np.random.Generator) -> dict[str, object]:
         writer = csv.DictWriter(handle, fieldnames=list(factor_rows[0]))
         writer.writeheader()
         writer.writerows(factor_rows)
+    factors_by_mu = {
+        mu: sorted(
+            (
+                float(row["nu_star_minus_c0"]),
+                float(row["spmd_to_sgd_bound_proportional_factor"]),
+            )
+            for row in factor_rows
+            if row["mu"] == mu
+        )
+        for mu in mus
+    }
+    factor_monotone = all(
+        all(right[1] < left[1] for left, right in zip(rows, rows[1:]))
+        for rows in factors_by_mu.values()
+    )
+    factor_all_finite = all(
+        math.isfinite(float(row["spmd_to_sgd_bound_proportional_factor"]))
+        and float(row["spmd_to_sgd_bound_proportional_factor"]) > 0
+        for row in factor_rows
+    )
 
     # Negative control is the legacy repository's wrong variable: it computes
     # a ratio from raw logits rather than z=exp(s). It must not agree with the
@@ -436,13 +456,40 @@ def verify_claim_4(rng: np.random.Generator) -> dict[str, object]:
     )
     correct_z = np.exp(control_samples)
     correct_kappa = float(np.mean(correct_z**2) / np.mean(correct_z) ** 2)
-    negative_rejected = bool(abs(wrong_kappa - correct_kappa) / correct_kappa > 0.1)
+    kappa_negative_rejected = bool(
+        abs(wrong_kappa - correct_kappa) / correct_kappa > 0.1
+    )
+    wrong_factors = [
+        1.0 / abs(float(result["nu_star"]))
+        for result in results
+    ]
+    correct_factors = [
+        float(row["spmd_to_sgd_bound_proportional_factor"])
+        for row in factor_rows
+    ]
+    factor_negative_rejected = bool(
+        max(
+            abs(wrong - correct) / max(abs(correct), 1e-30)
+            for wrong, correct in zip(wrong_factors, correct_factors)
+        )
+        > 0.1
+    )
+    negative_rejected = bool(kappa_negative_rejected and factor_negative_rejected)
     write_json(
         C4 / "negative_control.json",
         {
-            "control": "legacy_raw_logit_moment_ratio",
-            "wrong_kappa": wrong_kappa,
-            "correct_exp_risk_kappa": correct_kappa,
+            "controls": {
+                "legacy_raw_logit_moment_ratio": {
+                    "wrong_kappa": wrong_kappa,
+                    "correct_exp_risk_kappa": correct_kappa,
+                    "rejected_as_expected": kappa_negative_rejected,
+                },
+                "bound_factor_without_exponential": {
+                    "wrong_factors": wrong_factors,
+                    "correct_factors": correct_factors,
+                    "rejected_as_expected": factor_negative_rejected,
+                },
+            },
             "rejected_as_expected": negative_rejected,
         },
     )
@@ -451,6 +498,8 @@ def verify_claim_4(rng: np.random.Generator) -> dict[str, object]:
         kappa_accuracy < 0.015
         and all(value <= -0.5 for value in monotone_correlations.values())
         and high_sigma_better
+        and factor_all_finite
+        and factor_monotone
         and negative_rejected
     )
     summary = {
@@ -461,6 +510,12 @@ def verify_claim_4(rng: np.random.Generator) -> dict[str, object]:
         "max_kappa_relative_error": kappa_accuracy,
         "spearman_kappa_vs_error_ratio": monotone_correlations,
         "sigma_1_spmd_ci_below_sgd": high_sigma_better,
+        "bound_factor_rows": len(factor_rows),
+        "bound_factor_range": [
+            min(correct_factors),
+            max(correct_factors),
+        ],
+        "bound_factor_decreases_with_nu_star_minus_c0": factor_monotone,
         "mu_invariance_relative_differences": mu_relative_differences,
         "negative_control_rejected": negative_rejected,
         "scope_note": "Theorem 4.3 is the SPMD bound. The SGD factor comes from Theorem 4.5 and the following remark, not Theorem 4.3 alone.",

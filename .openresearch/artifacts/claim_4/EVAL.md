@@ -1,0 +1,174 @@
+# Claim 4 evaluation
+
+Verdict: **VERIFIED**
+
+```json
+{
+  "independent_checker_passed": true,
+  "max_kappa_relative_error": 0.007273211135745837,
+  "mu_invariance_relative_differences": [
+    0.9318883938979708,
+    0.9160580926401485,
+    0.006085925785455423
+  ],
+  "negative_control_rejected": true,
+  "passed": true,
+  "runtime_seconds": 2.747662166999362,
+  "sample_protocol": "1,000,000 Gaussian points per (mu,sigma), as Appendix F.4",
+  "scope_note": "Theorem 4.3 is the SPMD bound. The SGD factor comes from Theorem 4.5 and the following remark, not Theorem 4.3 alone.",
+  "settings": [
+    {
+      "analytic_gaussian_kappa": 1.010050167084168,
+      "c0": -1.4883372827710832,
+      "c1": 0.0,
+      "iterations": 3000,
+      "kappa_relative_error": 9.620951570895078e-06,
+      "mu": -1.0,
+      "nu_star": -0.9948436419857462,
+      "sample_kappa": 1.0100598847279096,
+      "sample_mean_z": 0.36978125828737424,
+      "sample_size": 1000000,
+      "sgd_alpha": 1.0,
+      "sigma": 0.1,
+      "spmd_better_fraction": 0.875,
+      "spmd_log_alpha": -6.0,
+      "tail_error_ratio_ci95": [
+        0.8738889027066218,
+        1.036155416258265
+      ],
+      "tail_error_ratio_mean": 0.9473053794195174,
+      "tail_sgd_squared_error_mean": 0.010292535349350252,
+      "tail_spmd_squared_error_mean": 0.0097359193465463,
+      "trajectories": 64
+    },
+    {
+      "analytic_gaussian_kappa": 1.0941742837052104,
+      "c0": -2.3581337019138555,
+      "c1": 0.5009314000686479,
+      "iterations": 3000,
+      "kappa_relative_error": 0.00016444123070605315,
+      "mu": -1.0,
+      "nu_star": -0.9545666765500456,
+      "sample_kappa": 1.0943542110710298,
+      "sample_mean_z": 0.38497892881219614,
+      "sample_size": 1000000,
+      "sgd_alpha": 1.0,
+      "sigma": 0.3,
+      "spmd_better_fraction": 1.0,
+      "spmd_log_alpha": -6.0,
+      "tail_error_ratio_ci95": [
+        0.059620634382835345,
+        0.09311392179420228
+      ],
+      "tail_error_ratio_mean": 0.07458280983921027,
+      "tail_sgd_squared_error_mean": 0.10752640338610751,
+      "tail_spmd_squared_error_mean": 0.007997106375653127,
+      "trajectories": 64
+    },
+    {
+      "analytic_gaussian_kappa": 2.718281828459045,
+      "c0": -5.887550967732823,
+      "c1": 3.9658844643954687,
+      "iterations": 3000,
+      "kappa_relative_error": 0.007273211135745837,
+      "mu": -1.0,
+      "nu_star": -0.4995005763222369,
+      "sample_kappa": 2.738052466123889,
+      "sample_mean_z": 0.6068336511396318,
+      "sample_size": 1000000,
+      "sgd_alpha": 1.0,
+      "sigma": 1.0,
+      "spmd_better_fraction": 1.0,
+      "spmd_log_alpha": -6.0,
+      "tail_error_ratio_ci95": [
+        0.00014408495917038035,
+        0.0016594390152512295
+      ],
+      "tail_error_ratio_mean": 0.0006290804428955331,
+      "tail_sgd_squared_error_mean": 2.2505703366065246,
+      "tail_spmd_squared_error_mean": 0.001408464450611319,
+      "trajectories": 64
+    },
+    {
+      "analytic_gaussian_kappa": 1.010050167084168,
+      "c0": -10.483679030973809,
+      "c1": 0.0,
+      "iterations": 3000,
+      "kappa_relative_error": 5.6568882645945474e-06,
+      "mu": -10.0,
+      "nu_star": -9.995099708591786,
+      "sample_kappa": 1.0100444533432311,
+      "sample_mean_z": 4.5622948630678816e-05,
+      "sample_size": 1000000,
+      "sgd_alpha": 1.0,
+      "sigma": 0.1,
+      "spmd_better_fraction": 0.0,
+      "spmd_log_alpha": 3.0,
+      "tail_error_ratio_ci95": [
+        2.378773633356547,
+        2.789387143733902
+      ],
+      "tail_error_ratio_mean": 2.6002841196839235,
+      "tail_sgd_squared_error_mean": 0.010196110588014897,
+      "tail_spmd_squared_error_mean": 0.026468586308101852,
+      "trajectories": 64
+    },
+    {
+      "analytic_gaussian_kappa": 1.0941742837052104,
+      "c0": -11.41814056355257,
+      "c1": 0.0,
+      "iterations": 3000,
+      "kappa_relative_error": 0.00012194425753754776,
+      "mu": -10.0,
+      "nu_star": -9.954899805925725,
+      "sample_kappa": 1.0940408554345673,
+      "sample_mean_z": 4.74943497834815e-05,
+      "sample_size": 1000000,
+      "sgd_alpha": 1.0,
+      "sigma": 0.3,
+      "spmd_better_fraction": 1.0,
+      "spmd_log_alpha": 3.0,
+      "tail_error_ratio_ci95": [
+        0.17171034095296311,
+        0.2312327163365453
+      ],
+      "tail_error_ratio_mean": 0.20064526034721153,
+      "tail_sgd_squared_error_mean": 0.11393796217966982,
+      "tail_spmd_squared_error_mean": 0.022774781381749373,
+      "trajectories": 64
+    },
+    {
+      "analytic_gaussian_kappa": 2.718281828459045,
+      "c0": -14.74628489868217,
+      "c1": 0.0,
+      "iterations": 3000,
+      "kappa_relative_error": 0.00575814788275209,
+      "mu": -10.0,
+      "nu_star": -9.500170064224125,
+      "sample_kappa": 2.70262955970378,
+      "sample_mean_z": 7.483910135169131e-05,
+      "sample_size": 1000000,
+      "sgd_alpha": 1.0,
+      "sigma": 1.0,
+      "spmd_better_fraction": 1.0,
+      "spmd_log_alpha": 3.0,
+      "tail_error_ratio_ci95": [
+        0.00020125978860969257,
+        0.0016599249155907893
+      ],
+      "tail_error_ratio_mean": 0.0006252635207594141,
+      "tail_sgd_squared_error_mean": 5.607966614237803,
+      "tail_spmd_squared_error_mean": 0.003477494800581113,
+      "trajectories": 64
+    }
+  ],
+  "sigma_1_spmd_ci_below_sgd": true,
+  "spearman_kappa_vs_error_ratio": {
+    "-1.0": -1.0,
+    "-10.0": -1.0
+  },
+  "verdict": "VERIFIED"
+}
+```
+
+See `source_audit.md` and `limitations.md` for exact scope.

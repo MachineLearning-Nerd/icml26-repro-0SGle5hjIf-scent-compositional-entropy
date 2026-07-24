@@ -1,0 +1,17 @@
+{
+  "control": "naive_exp_then_log",
+  "expected": "at least one non-finite result while stable update stays finite",
+  "naive": [
+    null,
+    null,
+    null,
+    -10000.0
+  ],
+  "rejected_as_expected": true,
+  "stable": [
+    10000.0,
+    9046.05170185988,
+    0.0,
+    -10000.0
+  ]
+}

@@ -1,0 +1,6 @@
+python=3.12.11
+torch=2.13.0
+torchvision=0.28.0
+platform=macOS-26.5.2-arm64-arm-64bit
+logical_cpus=8
+torch_threads=8

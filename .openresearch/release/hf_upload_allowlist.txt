@@ -1,0 +1,2 @@
+logbook.json
+pages/rigorous-update/page.md

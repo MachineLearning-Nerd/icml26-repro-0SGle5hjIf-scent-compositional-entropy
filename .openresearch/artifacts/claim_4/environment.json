@@ -1,0 +1,13 @@
+{
+  "git_sha": "887033a666997385d01e62c4cee363ff82f8f1ea",
+  "logical_cpu_count": 8,
+  "memory_bytes": 17179869184,
+  "numpy": "2.5.1",
+  "physical_cpu_count": 8,
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "processor": "arm",
+  "python": "3.12.11 (main, Aug 18 2025, 19:02:39) [Clang 20.1.4 ]",
+  "run_command": "uv run --frozen python repro/src/verify_scent.py",
+  "scipy": "1.18.0",
+  "seed": 260202877
+}

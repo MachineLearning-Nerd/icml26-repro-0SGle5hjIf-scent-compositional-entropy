@@ -8,12 +8,18 @@
     "icml2026-repro",
     "paper-0SGle5hjIf"
   ],
-  "updated_at": "2026-07-21T17:01:19+00:00",
+  "updated_at": "2026-07-24T14:15:00+00:00",
   "root": {
     "slug": "index",
     "title": "Repro - A Geometry-Aware Efficient Algorithm for Compositional Entropic Risk Minimization",
     "file": "pages/index.md",
     "children": [
+      {
+        "slug": "rigorous-update",
+        "title": "Rigorous claim-by-claim update",
+        "file": "pages/rigorous-update/page.md",
+        "children": []
+      },
       {
         "slug": "overview",
         "title": "Overview",

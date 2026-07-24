@@ -1,0 +1,53 @@
+{
+  "independent_checker_passed": true,
+  "interval_results": [
+    {
+      "breaches": 0,
+      "c0": -1000.0,
+      "c1": -900.0,
+      "coordinates": 4096,
+      "iterations": 2048,
+      "max_seen": -900.0,
+      "min_seen": -1000.0,
+      "updates": 8388608
+    },
+    {
+      "breaches": 0,
+      "c0": -20.0,
+      "c1": 10.0,
+      "coordinates": 4096,
+      "iterations": 2048,
+      "max_seen": 10.0,
+      "min_seen": -20.0,
+      "updates": 8388608
+    },
+    {
+      "breaches": 0,
+      "c0": 0.0,
+      "c1": 0.001,
+      "coordinates": 4096,
+      "iterations": 2048,
+      "max_seen": 0.0010000000000012221,
+      "min_seen": 0.0,
+      "updates": 8388608
+    },
+    {
+      "breaches": 0,
+      "c0": 900.0,
+      "c1": 1000.0,
+      "coordinates": 4096,
+      "iterations": 2048,
+      "max_seen": 1000.0000000000002,
+      "min_seen": 899.9999999999998,
+      "updates": 8388608
+    }
+  ],
+  "max_one_step_convex_hull_breach": 2.2737367544323206e-13,
+  "negative_control_rejected": true,
+  "note": "No clipping or projection is used by the SPMD update.",
+  "passed": true,
+  "runtime_seconds": 9.383368040995265,
+  "total_interval_breaches": 0,
+  "total_updates": 33554432,
+  "verdict": "VERIFIED"
+}

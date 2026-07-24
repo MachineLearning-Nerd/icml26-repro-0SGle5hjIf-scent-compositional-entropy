@@ -1,0 +1,7 @@
+{
+  "checker_passed": true,
+  "claim": 6,
+  "mode": "integration",
+  "negative_control_rejected": true,
+  "verdict": "FALSIFIED"
+}

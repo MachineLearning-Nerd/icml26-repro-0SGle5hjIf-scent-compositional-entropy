@@ -1,0 +1,15 @@
+{
+  "checker": "mpmath_90_digit_recomputation_from_raw_csv",
+  "claim_1": {
+    "max_first_order_residual": 4.677218739668836e-10,
+    "max_formula_abs_error": 3.563356938443577e-15,
+    "passed": true,
+    "rows": 512
+  },
+  "claim_3": {
+    "breaches": 0,
+    "max_formula_abs_error": 2e-13,
+    "passed": true,
+    "rows": 192
+  }
+}

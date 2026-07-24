@@ -1,0 +1,10 @@
+{
+  "c0": 0.0,
+  "c1": 1.0,
+  "control": "unprojected_euclidean_sgd_dual_step",
+  "nu_0": 0.0,
+  "nu_1": 17.18281828459045,
+  "rejected_as_expected": true,
+  "s": 1.0,
+  "step_size": 10.0
+}

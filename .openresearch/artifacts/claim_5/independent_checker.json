@@ -1,0 +1,8 @@
+{
+  "blocker_holds": true,
+  "checker": "independent_claim5_raw_inventory_reduction",
+  "negative_control_rejected": true,
+  "passed": true,
+  "revision_match": true,
+  "size_match": true
+}

@@ -1,0 +1,55 @@
+{
+  "datasets": {
+    "Glint360K": {
+      "examples": 17091657,
+      "feature_dim": 512,
+      "minimum_float32_feature_bytes": 35003713536,
+      "repo": "gaunernst/glint360k-wds-gz",
+      "revision": "d0da68fbc62b545010942f959d2d3b6a364f57b8",
+      "source_bytes": 129922066070,
+      "source_files": 1387
+    },
+    "TreeOfLife-10M": {
+      "examples": 9533174,
+      "feature_dim": 512,
+      "minimum_float32_feature_bytes": 19523940352,
+      "repo": "imageomics/TreeOfLife-10M",
+      "revision": "91debffb7146c32c89d76feb1eb575b555e2ecc7",
+      "source_bytes": 1994644470866,
+      "source_files": 80
+    }
+  },
+  "minimum_protocol": {
+    "batch_size": 128,
+    "batch_steps": 124804200,
+    "datasets": 2,
+    "epochs": 50,
+    "example_visits": 15974898600,
+    "method_names": [
+      "SCENT",
+      "SOX",
+      "U-max",
+      "BSGD"
+    ],
+    "methods": 4,
+    "seeds": 3
+  },
+  "official_code": {
+    "revision": "cfbf17925754f18855f26715adeec4773aa0591d",
+    "url": "https://github.com/Optimization-AI/SCENT"
+  },
+  "official_scent_feature_files": [],
+  "official_scent_release_assets": [],
+  "public_extracted_feature_search_matches": [],
+  "retrieved_at_utc": "2026-07-24T13:58:37.661494+00:00",
+  "runtime": {
+    "available_disk_bytes": 15367856128,
+    "command": "uv run --frozen python repro/src/verify_scent.py",
+    "disk_total_bytes": 245107195904,
+    "git_sha": "887033a666997385d01e62c4cee363ff82f8f1ea",
+    "logical_cpus": 8,
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "python": "3.12.11"
+  },
+  "user_agent": "OpenResearch-SCENT-reproduction/1.0"
+}

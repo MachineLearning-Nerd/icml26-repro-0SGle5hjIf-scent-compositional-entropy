@@ -1,8 +1,19 @@
 {
   "paper": "0SGle5hjIf",
-  "tests_passed": true,
-  "publication_gate_passed": true,
-  "claims_verified": 6,
-  "claims_total": 6,
-  "arxiv": "2602.02877"
+  "arxiv": "2602.02877",
+  "baseline_score": "5/12",
+  "hf_head": "71993d9a3c56ee16bd8935f11d635988eb494f5b",
+  "judge_head": "71993d9a3c56ee16bd8935f11d635988eb494f5b",
+  "claim_verdicts": {
+    "1": "VERIFIED",
+    "2": "VERIFIED",
+    "3": "VERIFIED",
+    "4": "VERIFIED",
+    "5": "BLOCKED",
+    "6": "FALSIFIED"
+  },
+  "cumulative_regression_passed": true,
+  "publication_gate_passed": false,
+  "publication_status": "AWAITING_EXPLICIT_APPROVAL",
+  "score_increase_claimed": false
 }

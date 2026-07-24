@@ -1,0 +1,7 @@
+{
+  "independent_checker_passed": true,
+  "raw_inventory_sha256": "817a47b263ce72a4be6f512cee5703ad50fc8622d598719e142516f4047e191c",
+  "reason": "The exact released-data pipeline exceeds authorized CPU storage and work capacity, and no official extracted features are published.",
+  "runtime_seconds": 21.375459582995973,
+  "verdict": "BLOCKED"
+}
