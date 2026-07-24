@@ -142,12 +142,12 @@ discrepancy rather than silently changing the contract.
 
 All theory and integration work ran locally. CIFAR full runs used Hugging Face
 `cpu-upgrade` only—8 vCPUs, 32 GB RAM, no GPU. At report preparation, the
-OpenResearch ledger contained about 0.90 local CPU-hours and 59.53 HF
+OpenResearch ledger contained about 1.03 local CPU-hours and 59.80 HF
 CPU-upgrade hours, including failed/cancelled profiling and a provider-stuck
 superseded job for which cancellation was requested. At the official
 [Hugging Face Jobs rate](https://huggingface.co/docs/hub/jobs-pricing) of
 $0.03/hour, that is an estimated $1.79; invoice rounding may differ. This
-is a ledger snapshot at 2026-07-24 19:48 IST; the stuck job was still accruing
+is a ledger snapshot at 2026-07-24 20:05 IST; the stuck job was still accruing
 reported wall time despite its cancellation flag.
 
 The judged baseline was 5/12 at HF/Judge revision

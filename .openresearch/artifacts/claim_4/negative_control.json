@@ -1,6 +1,29 @@
 {
-  "control": "legacy_raw_logit_moment_ratio",
-  "correct_exp_risk_kappa": 2.71379004928171,
-  "rejected_as_expected": true,
-  "wrong_kappa": 1.999294083958346
+  "controls": {
+    "bound_factor_without_exponential": {
+      "correct_factors": [
+        0.6136540519799903,
+        0.25741409091524065,
+        0.009150892492251482,
+        0.06137981362966112,
+        0.023253360252703713,
+        0.0005545106558026065
+      ],
+      "rejected_as_expected": true,
+      "wrong_factors": [
+        1.0051830838502034,
+        1.0475957568665162,
+        2.0019996920982166,
+        0.10004902693871079,
+        0.10045304518331193,
+        0.10526127356033489
+      ]
+    },
+    "legacy_raw_logit_moment_ratio": {
+      "correct_exp_risk_kappa": 2.71379004928171,
+      "rejected_as_expected": true,
+      "wrong_kappa": 1.999294083958346
+    }
+  },
+  "rejected_as_expected": true
 }

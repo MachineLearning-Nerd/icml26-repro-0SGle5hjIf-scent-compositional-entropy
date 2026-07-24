@@ -81,6 +81,8 @@ def main() -> None:
             ROOT / "README.md",
             ROOT / "reports" / "scent-reproduction" / "report.md",
             ROOT / "notebooks" / "scent_reproduction.py",
+            ROOT / ".openresearch" / "release" / "commands_executed.md",
+            ROOT / ".openresearch" / "release" / "release_report.md",
         ]
     )
     for path in scan_files:
@@ -108,6 +110,8 @@ def main() -> None:
             *ROOT.glob("reports/scent-reproduction/**/*"),
             ROOT / "README.md",
             ROOT / "notebooks" / "scent_reproduction.py",
+            ROOT / ".openresearch" / "release" / "commands_executed.md",
+            ROOT / ".openresearch" / "release" / "release_report.md",
         ]
         if path.is_file()
     )

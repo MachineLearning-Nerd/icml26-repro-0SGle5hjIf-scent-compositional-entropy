@@ -24,10 +24,13 @@
     ]
   },
   "claim_4": {
+    "bound_factor_decreases_with_nu_star_minus_c0": true,
+    "bound_factor_rows": 6,
+    "max_bound_factor_relative_error": 0.0,
     "max_kappa_relative_error": 0.007273211135745837,
     "passed": true,
     "rows": 6,
-    "sigma_1_spmd_mean_below_sgd": true,
+    "sigma_1_spmd_ci_below_sgd": true,
     "spearman_kappa_vs_error_ratio": {
       "-1.0": -1.0,
       "-10.0": -1.0

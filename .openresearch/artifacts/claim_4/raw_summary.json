@@ -1,4 +1,10 @@
 {
+  "bound_factor_decreases_with_nu_star_minus_c0": true,
+  "bound_factor_range": [
+    0.0005545106558026065,
+    0.6136540519799903
+  ],
+  "bound_factor_rows": 6,
   "independent_checker_passed": true,
   "max_kappa_relative_error": 0.007273211135745837,
   "mu_invariance_relative_differences": [
@@ -8,7 +14,7 @@
   ],
   "negative_control_rejected": true,
   "passed": true,
-  "runtime_seconds": 2.747662166999362,
+  "runtime_seconds": 2.3003618750008172,
   "sample_protocol": "1,000,000 Gaussian points per (mu,sigma), as Appendix F.4",
   "scope_note": "Theorem 4.3 is the SPMD bound. The SGD factor comes from Theorem 4.5 and the following remark, not Theorem 4.3 alone.",
   "settings": [

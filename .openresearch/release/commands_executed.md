@@ -61,6 +61,7 @@ cancellation-requested executions:
 | `c2303e58-60e5-4448-b791-00efbac360e5` | CIFAR-100 seed 2024 | HF cpu-upgrade | done |
 | `7164998a-5c26-42c1-bb26-9c396e1ec1d6` | CIFAR-100 seed 2602 | HF cpu-upgrade | done |
 | `6cb58e70-8c1a-421c-8ba1-528c1f6f4e18` | integrated cumulative verdict | local CPU | done |
+| `472656ec-77a1-4d7a-affd-b90f9a142b8d` | strengthened Claim 4 and release regression | local CPU | done |
 
 Runs were submitted only with `orx exp run`, monitored with bounded
 `orx exp wait ... --timeout 480` calls, and analyzed through `orx logs`.
