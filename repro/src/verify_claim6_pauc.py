@@ -753,7 +753,7 @@ def main() -> int:
         METRICS_PATH, ARTIFACT_DIR / "independent_checker_output.json"
     )
     negative_path = ARTIFACT_DIR / "negative_control_metrics.csv"
-    if config["mode"] == "profile":
+    if config["mode"] in {"profile", "shard"}:
         write_csv(negative_path, all_rows[:-1])
         negative_code, negative = invoke_checker(
             negative_path, ARTIFACT_DIR / "negative_control_output.json"
@@ -841,7 +841,7 @@ def main() -> int:
         f"- Runtime: {runtime:.3f} seconds of CPU-only wall clock\n"
         f"- Independent checker: {'PASS' if checker_code == 0 else 'FAIL'}\n"
         f"- Negative control rejected: {negative_rejected}\n"
-        "- The profile mode is timing evidence only and cannot establish a claim verdict.\n"
+        "- Profile and shard modes cannot establish a claim verdict by themselves.\n"
     )
 
     print("\n" + "=" * 78)
@@ -858,6 +858,9 @@ def main() -> int:
             f"{(2 * 2 * 3 * 60) / max(1, len(config['datasets']) * len(config['taus']) * len(config['seeds']) * config['finetune_epochs']):.1f}"
         )
         print("CLAIM6_PROFILE_SUITE=PASS" if checker_code == 0 and negative_rejected else "CLAIM6_PROFILE_SUITE=FAIL")
+    elif config["mode"] == "shard":
+        print(f"CLAIM6_SHARD_SEED={config['seeds'][0]}")
+        print("CLAIM6_SHARD_SUITE=PASS" if checker_code == 0 and negative_rejected else "CLAIM6_SHARD_SUITE=FAIL")
     else:
         print("CLAIM6_FULL_SUITE=PASS" if checker_code == 0 and negative_rejected else "CLAIM6_FULL_SUITE=FAIL")
     return 0 if checker_code == 0 and negative_rejected else 1

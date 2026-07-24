@@ -111,6 +111,49 @@ def main() -> int:
         print(json.dumps(output, sort_keys=True))
         return 0 if output["passed"] else 1
 
+    if config["mode"] == "shard":
+        methods = {row["method"] for row in rows}
+        epochs = {int(row["epoch"]) for row in rows}
+        final_rows = [
+            {
+                "dataset": row["dataset"],
+                "tau": float(row["tau"]),
+                "method": row["method"],
+                "seed": int(row["seed"]),
+                "epoch": int(row["epoch"]),
+                "train_objective": float(row["train_objective"]),
+                "test_pauc": float(row["test_pauc"]),
+            }
+            for row in rows
+            if int(row["epoch"]) == config["finetune_epochs"]
+        ]
+        passed = (
+            complete
+            and len(config["seeds"]) == 1
+            and methods == set(config["methods"])
+            and epochs
+            == set(
+                range(
+                    0,
+                    config["finetune_epochs"] + 1,
+                    config["evaluation_every"],
+                )
+            )
+            and len(final_rows) == len(config["taus"]) * len(config["methods"])
+        )
+        output.update(
+            {
+                "verdict": "SHARD_ONLY",
+                "seed": config["seeds"][0] if len(config["seeds"]) == 1 else None,
+                "methods_present": sorted(methods),
+                "epochs_present": sorted(epochs),
+                "final_rows": final_rows,
+                "passed": passed,
+            }
+        )
+        print(json.dumps(output, sort_keys=True))
+        return 0 if passed else 1
+
     if not complete:
         output.update({"verdict": "BLOCKED", "passed": False})
         print(json.dumps(output, sort_keys=True))

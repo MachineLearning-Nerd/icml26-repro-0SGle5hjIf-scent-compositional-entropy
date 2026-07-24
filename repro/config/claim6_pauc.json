@@ -1,18 +1,10 @@
 {
-  "mode": "full",
-  "datasets": ["cifar10", "cifar100"],
+  "mode": "shard",
+  "datasets": ["cifar100"],
   "run_datasets": ["cifar100"],
-  "imported_final_metrics": {
-    "datasets": ["cifar10"],
-    "path": ".openresearch/artifacts/claim_6/parent_cifar10_final_metrics.csv",
-    "sha256": "166e7a5f6c3023f262efdc4a3a966bca5e603ab04d7b499c2c468773a9352162",
-    "provenance_path": ".openresearch/artifacts/claim_6/parent_cifar10_provenance.json",
-    "provenance_sha256": "7278895a4164d91eca41fe936a1d11ada0e15844f40a77cce121403a4d1f2279",
-    "run_id": "292e041e-3234-4b9e-b504-61b4894848c4"
-  },
   "taus": [0.05, 0.1],
   "methods": ["SCENT", "SOX"],
-  "seeds": [79, 2024, 2602],
+  "seeds": [79],
   "pretrain_seed": 0,
   "pretrain_epochs": 60,
   "finetune_epochs": 60,
