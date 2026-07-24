@@ -4,7 +4,7 @@
   "run_datasets": ["cifar100"],
   "taus": [0.05, 0.1],
   "methods": ["SCENT", "SOX"],
-  "seeds": [79],
+  "seeds": [2602],
   "pretrain_seed": 0,
   "pretrain_epochs": 60,
   "finetune_epochs": 60,
