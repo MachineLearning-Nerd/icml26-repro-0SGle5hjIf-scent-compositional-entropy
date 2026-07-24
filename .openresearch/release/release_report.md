@@ -1,8 +1,10 @@
-# Final pre-publication release report
+# Final release and publication report
 
-Status: **AWAITING EXPLICIT HUGGING FACE PUBLICATION APPROVAL**
+Status: **PUBLISHED — AWAITING JUDGE**
 
-No Hugging Face files have been uploaded. No judge score increase is claimed.
+The approved two-file, text-only update was published to the existing Space at
+revision `7fcacca041de1f1d591846177267ffb679c0dea7`. The latest judge record
+remains 5/12 at the prior revision, so no score increase is claimed.
 
 ## Baseline and immutable references
 
@@ -13,9 +15,11 @@ No Hugging Face files have been uploaded. No judge score increase is claimed.
 - Validated baseline branch: `master`, starting SHA
   `b3a5d8974775cf428666476ed2820c6d53cdeda9`.
 - Baseline judge score: `5/12`.
-- Hugging Face Head and Judge Head:
+- Published Hugging Face Head:
+  `7fcacca041de1f1d591846177267ffb679c0dea7`.
+- Latest Judge Head:
   `71993d9a3c56ee16bd8935f11d635988eb494f5b`.
-- Space target, if approved: `DineshAI/0SGle5hjIf`. No second Space exists.
+- Published Space: `DineshAI/0SGle5hjIf`. No second Space exists.
 
 ## Experiment tree
 
@@ -110,14 +114,11 @@ Their exact candidate hashes are in
 is `.openresearch/release/candidate_artifact_manifest.sha256`; the machine audit
 is `.openresearch/release/release_audit.json`.
 
-## Approval boundary
+## Publication outcome
 
-Upon explicit approval only:
-
-1. Upload the two allowlisted text files to `DineshAI/0SGle5hjIf`.
-2. Verify and report the exact resulting HF revision.
-3. Mark the paper awaiting judge without predicting a score.
-4. Mirror the exact published text paths plus README/report/notebook to GitHub
-   `master`, then verify the remote SHA with `git ls-remote`.
-
-Until that approval, the current HF and Judge heads remain unchanged.
+Explicit approval was received on 2026-07-24. The two allowlisted files were
+committed through the Hugging Face API, and their downloaded SHA-256 values
+exactly matched `.openresearch/release/hf_upload_manifest.sha256`. The Space
+reported the new revision and retained all 17 paths from the judged revision.
+The candidate is marked awaiting judge; the prior 5/12 verdict remains the only
+live score until the judge evaluates the new Hugging Face revision.

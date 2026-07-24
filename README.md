@@ -21,8 +21,9 @@ the required Glint360K/TreeOfLife feature assets were unavailable and exceeded
 the local disk budget, so it remains BLOCKED.
 
 Read the [illustrated report](reports/scent-reproduction/report.md) or open the
-[self-contained marimo tutorial](notebooks/scent_reproduction.py). The judged
-baseline remains **5/12** at HF/Judge revision
+[self-contained marimo tutorial](notebooks/scent_reproduction.py). The candidate
+is published at HF revision `7fcacca041de1f1d591846177267ffb679c0dea7` and is
+**awaiting judge**. The latest judge record remains **5/12** at revision
 `71993d9a3c56ee16bd8935f11d635988eb494f5b`; no score increase is claimed before
 a new live verdict.
 

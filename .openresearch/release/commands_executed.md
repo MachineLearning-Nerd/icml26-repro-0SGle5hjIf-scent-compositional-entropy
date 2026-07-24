@@ -75,4 +75,55 @@ uv run --frozen python repro/src/audit_release.py
 ```
 
 The visual report was mirrored into the dashboard Files tree under
-`project/scent-reproduction/`. No Hugging Face upload command has been run.
+`project/scent-reproduction/`.
+
+## Approved publication
+
+The first CLI upload attempt was rejected before a commit because its
+existence check hit the Space-creation rate limit; the Space remained at the
+judged revision:
+
+```bash
+hf upload DineshAI/0SGle5hjIf .trackio/logbook . --repo-type space \
+  --include 'logbook.json' \
+  --include 'pages/rigorous-update/page.md' \
+  --commit-message 'Add rigorous claim-by-claim reproduction evidence' \
+  --commit-description 'Additive text-only update preserving the judged revision file set.' \
+  --format json
+```
+
+Publication then used the installed Hugging Face client's low-level commit API,
+with `parent_commit` set to the judged revision and exactly two
+`CommitOperationAdd` objects:
+
+```python
+HfApi().create_commit(
+    repo_id="DineshAI/0SGle5hjIf",
+    repo_type="space",
+    revision="main",
+    parent_commit="71993d9a3c56ee16bd8935f11d635988eb494f5b",
+    operations=[
+        CommitOperationAdd(
+            path_in_repo="logbook.json",
+            path_or_fileobj=".trackio/logbook/logbook.json",
+        ),
+        CommitOperationAdd(
+            path_in_repo="pages/rigorous-update/page.md",
+            path_or_fileobj=".trackio/logbook/pages/rigorous-update/page.md",
+        ),
+    ],
+    commit_message="Add rigorous claim-by-claim reproduction evidence",
+    commit_description="Additive text-only update preserving the judged revision file set.",
+)
+```
+
+The resulting HF revision is
+`7fcacca041de1f1d591846177267ffb679c0dea7`. Read-only `hf spaces info` and
+explicit-User-Agent downloads verified the live revision, retained file set,
+and the two published SHA-256 values. The GitHub publication surface was then
+mirrored and checked with:
+
+```bash
+git push origin HEAD:refs/heads/master
+git ls-remote origin refs/heads/master
+```
