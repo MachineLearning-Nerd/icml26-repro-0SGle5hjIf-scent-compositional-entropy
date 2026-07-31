@@ -15,7 +15,7 @@ control was rejected.
   "moderate_cases": 512,
   "negative_control_rejected": true,
   "passed": true,
-  "runtime_seconds": 1.0783876670029713,
+  "runtime_seconds": 0.056389583041891456,
   "stable_all_finite": true,
   "stress_cases": 400,
   "verdict": "VERIFIED"

@@ -1,5 +1,5 @@
 {
-  "git_sha": "887033a666997385d01e62c4cee363ff82f8f1ea",
+  "git_sha": "9799451c4aa312bb27e8c246814620257072be98",
   "logical_cpu_count": 8,
   "memory_bytes": 17179869184,
   "numpy": "2.5.1",
@@ -7,7 +7,7 @@
   "platform": "macOS-26.5.2-arm64-arm-64bit",
   "processor": "arm",
   "python": "3.12.11 (main, Aug 18 2025, 19:02:39) [Clang 20.1.4 ]",
-  "run_command": "uv run --frozen python repro/src/verify_scent.py",
+  "run_command": "uv run --frozen python repro/src/verify_rate_kappa.py",
   "scipy": "1.18.0",
   "seed": 260202877
 }

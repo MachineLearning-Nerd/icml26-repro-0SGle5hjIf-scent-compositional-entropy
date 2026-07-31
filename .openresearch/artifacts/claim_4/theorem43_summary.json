@@ -1,0 +1,112 @@
+{
+  "DEVIATION_note": "Theorem 4.3/4.5 bound ratio and its mu-invariance reproduce exactly. The empirical SPMD/SGD error ratio is NOT monotone in sigma beyond sigma=1 at these horizons, which the Figure 1 remark suggests it should be. Reported as a deviation; it is not part of the quantified claim, which concerns the provable bound.",
+  "DEVIATION_ratio_decreasing_in_sigma": false,
+  "bound_ratio_identity_max_relative_error": 4.136646196131813e-16,
+  "bound_ratio_prefactor_mu_spread": {
+    "sigma=0.25,T=1000": 0.0,
+    "sigma=0.25,T=16000": 0.0,
+    "sigma=0.25,T=4000": 0.0,
+    "sigma=0.25,T=64000": 0.0,
+    "sigma=0.5,T=1000": 0.0,
+    "sigma=0.5,T=16000": 3.860209148759512e-16,
+    "sigma=0.5,T=4000": 0.0,
+    "sigma=0.5,T=64000": 0.0,
+    "sigma=1.0,T=1000": 0.0,
+    "sigma=1.0,T=16000": 1.2137592924147457e-16,
+    "sigma=1.0,T=4000": 0.0,
+    "sigma=1.0,T=64000": 0.0,
+    "sigma=1.5,T=16000": 1.2374587217994571e-16,
+    "sigma=2.0,T=43002": 2.2392181405679345e-16
+  },
+  "cells_sgd_precondition_ok": 47,
+  "cells_spmd_precondition_ok": 47,
+  "cells_total": 47,
+  "environment": {
+    "git_sha": "9799451c4aa312bb27e8c246814620257072be98",
+    "logical_cpu_count": 8,
+    "numpy": "2.5.1",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "python": "3.12.11",
+    "scipy": "1.18.0"
+  },
+  "kappa_vs_scaled_error_spearman": 0.9607921417220957,
+  "log_log_rate_slope_by_sigma": {
+    "0.25": -0.4954425513567997,
+    "0.5": -0.49607364508977103,
+    "1.0": -0.5255539726893277
+  },
+  "max_relative_kappa_vs_gaussian_limit": 0.02268822950191358,
+  "mean_ratio_by_sigma": {
+    "0.25": 0.541216228201941,
+    "0.5": 0.09614865554078647,
+    "1.0": 0.011193449105320703,
+    "1.5": 0.021549430470581894,
+    "2.0": 0.03477896072818084
+  },
+  "minimum_admissible_horizon_by_sigma": {
+    "0.25": 1000,
+    "0.5": 1000,
+    "1.0": 1000,
+    "1.5": 6561,
+    "2.0": 43002
+  },
+  "mu_invariance": {
+    "0.25": {
+      "max": 0.5424166923042115,
+      "min": 0.5403987156287356,
+      "relative_spread": 0.0037203439792817122
+    },
+    "0.5": {
+      "max": 0.09622807692851734,
+      "min": 0.09601225073056431,
+      "relative_spread": 0.0022428609699158483
+    },
+    "1.0": {
+      "max": 0.011211591688531513,
+      "min": 0.011179499106554395,
+      "relative_spread": 0.002862446552521744
+    },
+    "1.5": {
+      "max": 0.02156883253568332,
+      "min": 0.021520843120934646,
+      "relative_spread": 0.002224942618905373
+    },
+    "2.0": {
+      "max": 0.0348296209148244,
+      "min": 0.03474414040862366,
+      "relative_spread": 0.002454247389306416
+    }
+  },
+  "mu_invariance_holds": true,
+  "negative_control_euclidean_geometry_rejected": true,
+  "negative_control_euclidean_row": {
+    "T": 16000,
+    "alpha": 1.2089303607739719e-05,
+    "c0": -13.0,
+    "c1": 11.0,
+    "euclidean_avg_gap": 8.903365985350144,
+    "interval_escapes": 0,
+    "mu": -1.0,
+    "nu_final_max": 10.80658435024924,
+    "nu_final_min": 10.806579723878421,
+    "seed": 260202884,
+    "sigma": 2.0,
+    "spmd_bound": 3.9003013891617613
+  },
+  "negative_control_understated_kappa_bound": 0.1374296779342803,
+  "negative_control_understated_kappa_measured": 0.9918836485397441,
+  "negative_control_understated_kappa_rejected": true,
+  "passed": true,
+  "rho_by_cell_max": 2.935204622402028,
+  "rho_min": 1.0,
+  "run_command": "uv run --frozen python repro/src/verify_claim4_theorem43.py",
+  "runtime_seconds": 35.5163445409853,
+  "seed": 260202877,
+  "sgd_bound_holds_all_cells": true,
+  "speedup_direction_holds": true,
+  "spmd_bound_holds_all_cells": true,
+  "trajectories_per_cell": 256,
+  "truncation_k_sigma": 6.0,
+  "verdict": "VERIFIED",
+  "worst_bound_over_measured_slack": 7.039369888402816
+}

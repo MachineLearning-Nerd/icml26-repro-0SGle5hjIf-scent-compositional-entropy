@@ -1,0 +1,159 @@
+{
+  "blocked_by": "GPU feature extraction unavailable; no substitute asset is faithful",
+  "claim": 5,
+  "findings": [
+    {
+      "asset": "imageomics/TreeOfLife-200M-Embeddings",
+      "is_precomputed_features": true,
+      "satisfies_claim": false,
+      "why_not": [
+        "Embeds TreeOfLife-200M (233,055,986 rows), a different corpus from the paper's TreeOfLife-10M (9,533,174 images).",
+        "Backbone is BioCLIP-2 at 768-d, not the paper's BioCLIP v1 CLIP ViT-B/16 at 512-d, so the feature space is not the one the reported loss curves were produced in.",
+        "Rows are sorted by taxonomic hierarchy, so any bounded shard subset is a contiguous taxonomic block; drawing an unbiased 10M-row sample requires reading all 345.85 GB across 668 shards."
+      ]
+    },
+    {
+      "asset": "Glint360K features",
+      "is_precomputed_features": false,
+      "satisfies_claim": false,
+      "why_not": [
+        "No published extracted-feature asset exists on the Hub.",
+        "The authors' pretrained ResNet-50 is distributed via Google Drive, not a Hub repo.",
+        "Producing the features requires encoder inference over 17,091,657 images, which needs GPU hardware. GPU is not authorized for this campaign, so this path is closed."
+      ]
+    }
+  ],
+  "hub_search_results": {
+    "TreeOfLife": [
+      "imageomics/TreeOfLife-10M",
+      "imageomics/TreeOfLife-200M",
+      "birder-project/TreeOfLife-10M-WEBP",
+      "birder-project/TreeOfLife-10M-EOL-NaturalImages",
+      "imageomics/TreeOfLife-10M-Captions",
+      "ScarlettChan/TreeOfLife-10M",
+      "Ethicalpirate91/TreeOfLife-10M",
+      "imageomics/TreeOfLife-200M-Embeddings",
+      "LYC-0291/TreeOfLife-10M",
+      "asdfeWRF/TreeOfLife-10M",
+      "juppy44/treeoflife_unique_species_wikipedia",
+      "juppy44/treeoflife_species_identification_reasoning",
+      "kaityc06/TreeOfLife-200M_masked"
+    ],
+    "TreeOfLife embeddings": [
+      "imageomics/TreeOfLife-200M-Embeddings"
+    ],
+    "glint360k": [
+      "yayoimizuha/Glint-360k-alignment",
+      "gaunernst/glint360k-wds-gz",
+      "yayoimizuha/Glint360k",
+      "34data/glint360k"
+    ],
+    "glint360k features": []
+  },
+  "measured_assets": [
+    {
+      "n_files": 670,
+      "n_parquet_shards": 668,
+      "reachable": true,
+      "repo": "imageomics/TreeOfLife-200M-Embeddings",
+      "revision": "820c8e8fb370cb0969c6d5c4866d1c2a70720472",
+      "tags": [
+        "task_categories:feature-extraction",
+        "language:en",
+        "license:cc0-1.0",
+        "size_categories:100M<n<1B",
+        "format:parquet",
+        "modality:image",
+        "modality:text",
+        "library:datasets",
+        "library:dask",
+        "library:polars",
+        "library:mlcroissant",
+        "arxiv:2505.23883",
+        "region:us",
+        "biology",
+        "biodiversity",
+        "embeddings",
+        "bioclip",
+        "tree-of-life",
+        "imageomics",
+        "parquet"
+      ],
+      "total_bytes": 345848088018,
+      "total_gb": 345.85
+    },
+    {
+      "n_files": 80,
+      "n_parquet_shards": 0,
+      "reachable": true,
+      "repo": "imageomics/TreeOfLife-10M",
+      "revision": "91debffb7146c32c89d76feb1eb575b555e2ecc7",
+      "tags": [
+        "task_categories:image-classification",
+        "task_categories:zero-shot-classification",
+        "language:en",
+        "language:la",
+        "size_categories:1M<n<10M",
+        "format:webdataset",
+        "modality:document",
+        "modality:image",
+        "modality:text",
+        "library:datasets",
+        "library:webdataset",
+        "library:mlcroissant",
+        "doi:10.57967/hf/7542",
+        "region:us",
+        "biology",
+        "images",
+        "animals",
+        "evolutionary biology",
+        "CV",
+        "multimodal"
+      ],
+      "total_bytes": 1994644470866,
+      "total_gb": 1994.64
+    },
+    {
+      "n_files": 1387,
+      "n_parquet_shards": 0,
+      "reachable": true,
+      "repo": "gaunernst/glint360k-wds-gz",
+      "revision": "d0da68fbc62b545010942f959d2d3b6a364f57b8",
+      "tags": [
+        "task_categories:image-classification",
+        "size_categories:10M<n<100M",
+        "format:webdataset",
+        "modality:image",
+        "modality:text",
+        "library:datasets",
+        "library:webdataset",
+        "library:mlcroissant",
+        "arxiv:2010.05222",
+        "region:us"
+      ],
+      "total_bytes": 129922066070,
+      "total_gb": 129.92
+    }
+  ],
+  "not_downgraded_to_proxy": "A reduced taxonomic slice or a different-backbone corpus would not test the stated claim, so no proxy result is reported as evidence for or against Claim 5.",
+  "paper_pipeline": {
+    "Glint360K": {
+      "classes": 360232,
+      "encoder": "ResNet-50 pretrained on Glint360K (authors' release)",
+      "encoder_distribution": "Google Drive folder, not a Hub repo",
+      "images": 17091657,
+      "webdataset_repo": "gaunernst/glint360k-wds-gz"
+    },
+    "TreeOfLife-10M": {
+      "classes": 160000,
+      "encoder": "CLIP ViT-B/16 pretrained on TreeOfLife-10M (BioCLIP v1), 512-d",
+      "encoder_distribution": "Hub, but inference over 9.5M images needs a GPU",
+      "images": 9533174,
+      "webdataset_repo": "imageomics/TreeOfLife-10M"
+    }
+  },
+  "reason": "Both named benchmarks require encoder inference over 9.5M-17.1M images on GPU hardware that is not authorized for this campaign, and no published asset supplies the paper's features. The one public precomputed-embedding asset covers a different corpus with a different backbone and cannot be subsampled without a full read.",
+  "run_command": "python3 repro/src/verify_claim5_asset_audit.py  # Hub metadata probe: needs huggingface_hub, which is outside the pinned numerics venv",
+  "runtime_seconds": 2.2059849579818547,
+  "verdict": "BLOCKED"
+}

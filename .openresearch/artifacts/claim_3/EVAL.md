@@ -55,7 +55,7 @@ control was rejected.
   "negative_control_rejected": true,
   "note": "No clipping or projection is used by the SPMD update.",
   "passed": true,
-  "runtime_seconds": 9.383368040995265,
+  "runtime_seconds": 1.5582853750092909,
   "total_interval_breaches": 0,
   "total_updates": 33554432,
   "verdict": "VERIFIED"

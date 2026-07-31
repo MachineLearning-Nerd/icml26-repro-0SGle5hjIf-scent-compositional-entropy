@@ -1,0 +1,33 @@
+{
+  "space_id": "DineshAI/0SGle5hjIf",
+  "judged_revision": "7fcacca041de1f1d591846177267ffb679c0dea7",
+  "judged_file_count": 18,
+  "staged_file_count": 120,
+  "upload_count": 105,
+  "judged_files_missing_from_candidate": [],
+  "judged_subset_holds": true,
+  "judged_files_left_untouched": [
+    ".gitattributes",
+    "README.md",
+    "bucket-icon.svg",
+    "index.html",
+    "logbook.css",
+    "logbook.js",
+    "pages/claims/page.md",
+    "pages/evidence/page.md",
+    "pages/overview/page.md",
+    "pages/rigorous-update/page.md",
+    "pages/verification-run/page.md",
+    "style.css",
+    "trackio-logo-light.png",
+    "trackio-logo.png",
+    "trackio-wordmark-dark.png"
+  ],
+  "judged_files_modified_by_this_release": [
+    "logbook.json",
+    "pages/conclusion/page.md",
+    "pages/index.md"
+  ],
+  "non_text_uploads": [],
+  "text_only_upload": true
+}

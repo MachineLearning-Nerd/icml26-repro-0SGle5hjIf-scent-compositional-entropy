@@ -1,1 +1,1 @@
-uv run --frozen python repro/src/verify_scent.py
+uv run --frozen python repro/src/verify_dual_contracts.py

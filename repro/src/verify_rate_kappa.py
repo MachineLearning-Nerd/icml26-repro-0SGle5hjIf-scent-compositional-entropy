@@ -549,7 +549,7 @@ def main() -> int:
     rng = np.random.default_rng(SEED)
     c2 = verify_claim_2(rng)
     c4 = verify_claim_4(rng)
-    command = "uv run --frozen python repro/src/verify_scent.py\n"
+    command = "uv run --frozen python repro/src/verify_rate_kappa.py\n"
     environment = {
         "git_sha": subprocess.check_output(
             ["git", "rev-parse", "HEAD"], cwd=REPO, text=True

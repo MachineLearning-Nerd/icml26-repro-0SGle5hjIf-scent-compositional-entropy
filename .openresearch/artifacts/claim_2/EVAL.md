@@ -55,7 +55,7 @@ Verdict: **VERIFIED**
     ],
     "inner_support": 256
   },
-  "runtime_seconds": 373.63645275000454,
+  "runtime_seconds": 27.855605332995765,
   "seeds_per_horizon": 20,
   "sqrt_t_cap_ratio_to_first": 1.212933635730627,
   "sqrt_t_mean_gap": [

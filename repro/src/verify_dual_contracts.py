@@ -334,7 +334,7 @@ def main() -> int:
     c1 = verify_claim_1(rng)
     c3 = verify_claim_3(rng)
 
-    command = "uv run --frozen python repro/src/verify_scent.py\n"
+    command = "uv run --frozen python repro/src/verify_dual_contracts.py\n"
     environment = {
         "git_sha": git_sha(),
         "seed": SEED,

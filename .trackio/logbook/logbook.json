@@ -1,47 +1,59 @@
 {
   "schema_version": 1,
-  "title": "Repro - A Geometry-Aware Efficient Algorithm for Compositional Entropic Risk Minimization",
-  "emoji": "🎯",
-  "space_id": null,
-  "paper": null,
+  "title": "Reproduction: A Geometry-Aware Efficient Algorithm for Compositional Entropic Risk Minimization",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "DineshAI/0SGle5hjIf",
+  "paper": "https://arxiv.org/abs/2602.02877",
   "tags": [
     "icml2026-repro",
     "paper-0SGle5hjIf"
   ],
-  "updated_at": "2026-07-24T14:15:00+00:00",
+  "updated_at": "2026-07-31T15:14:57+00:00",
   "root": {
     "slug": "index",
-    "title": "Repro - A Geometry-Aware Efficient Algorithm for Compositional Entropic Risk Minimization",
+    "title": "Reproduction: A Geometry-Aware Efficient Algorithm for Compositional Entropic Risk Minimization",
     "file": "pages/index.md",
     "children": [
       {
-        "slug": "rigorous-update",
-        "title": "Rigorous claim-by-claim update",
-        "file": "pages/rigorous-update/page.md",
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
         "children": []
       },
       {
-        "slug": "overview",
-        "title": "Overview",
-        "file": "pages/overview/page.md",
+        "slug": "claim-1-closed-form-dual-update",
+        "title": "Claim 1: Closed-form SPMD dual update",
+        "file": "pages/claim-1-closed-form-dual-update/page.md",
         "children": []
       },
       {
-        "slug": "claims",
-        "title": "Claims",
-        "file": "pages/claims/page.md",
+        "slug": "claim-2-convergence-rate",
+        "title": "Claim 2: O(1/sqrt(T)) convergence (Theorem 3.6)",
+        "file": "pages/claim-2-convergence-rate/page.md",
         "children": []
       },
       {
-        "slug": "evidence",
-        "title": "Evidence",
-        "file": "pages/evidence/page.md",
+        "slug": "claim-3-dual-boundedness",
+        "title": "Claim 3: Dual iterates stay in [c0, c1] (Lemma 3.3)",
+        "file": "pages/claim-3-dual-boundedness/page.md",
         "children": []
       },
       {
-        "slug": "verification-run",
-        "title": "Verification run",
-        "file": "pages/verification-run/page.md",
+        "slug": "claim-4-kappa-and-spmd-vs-sgd",
+        "title": "Claim 4: kappa characterises SPMD, and SPMD beats SGD (Theorem 4.3)",
+        "file": "pages/claim-4-kappa-and-spmd-vs-sgd/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-extreme-classification",
+        "title": "Claim 5: Extreme classification on Glint360K and TreeOfLife-10M",
+        "file": "pages/claim-5-extreme-classification/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-partial-auc",
+        "title": "Claim 6: Partial AUC maximization on CIFAR-10 and CIFAR-100",
+        "file": "pages/claim-6-partial-auc/page.md",
         "children": []
       },
       {
@@ -51,7 +63,5 @@
         "children": []
       }
     ]
-  },
-  "agent_view_tokens": 1576,
-  "revision": "1784653279767834492"
+  }
 }
