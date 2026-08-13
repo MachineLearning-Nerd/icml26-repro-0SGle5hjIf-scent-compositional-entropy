@@ -62,6 +62,10 @@
   "branch_cleanup": {
     "legacy_refs": "master and orx/*",
     "mapping": "BRANCH_AUDIT.md",
-    "normalization_identity": "MachineLearning-Nerd <MachineLearning-Nerd@users.noreply.github.com>"
+    "normalization_identity": "MachineLearning-Nerd <MachineLearning-Nerd@users.noreply.github.com>",
+    "status": "VERIFIED",
+    "final_branch_count": 21,
+    "default_branch": "main",
+    "old_remote_refs_absent": true
   }
 }

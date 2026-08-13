@@ -69,3 +69,19 @@ After the rename and history normalization, verify:
 - every reachable author and committer identity is the required
   `MachineLearning-Nerd` identity;
 - local `main` tracks `origin/main` with a clean worktree.
+
+## Live verification
+
+Verified on 2026-08-14 after publication cleanup:
+
+- Repository: `MachineLearning-Nerd/icml26-scent-compositional-entropy`.
+- Homepage: `https://arxiv.org/abs/2602.02877`.
+- Default branch: `main`.
+- GitHub exposes exactly the 21 final branches listed above.
+- The remote has no `master` branch and no `orx/*` branch.
+- All reachable local and published history uses
+  `MachineLearning-Nerd <MachineLearning-Nerd@users.noreply.github.com>` for
+  both author and committer.
+- The four main publication files and all new audit docs are reachable from
+  `main`.
+- The local `main` branch tracks `origin/main` and the worktree is clean.
