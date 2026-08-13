@@ -193,7 +193,7 @@ Full tables: [`theorem43_figure1.csv`](https://huggingface.co/spaces/DineshAI/0S
 | [`evidence/claim_4/EVAL.md`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/evidence/claim_4/EVAL.md) | 5615 | `560b5b2384f207eca43f35d5557fbd72…` |
 | [`evidence/claim_4/limitations.md`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/evidence/claim_4/limitations.md) | 891 | `d4389719003f3d3f4daeb6f4d5c3fd1e…` |
 
-Verifier: [`repro/src/verify_claim4_theorem43.py`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/repro/src/verify_claim4_theorem43.py) · earlier fixed-`w` run: [`repro/src/verify_rate_kappa.py`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/repro/src/verify_rate_kappa.py) · [https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy](https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy)
+Verifier: [`repro/src/verify_claim4_theorem43.py`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/repro/src/verify_claim4_theorem43.py) · earlier fixed-`w` run: [`repro/src/verify_rate_kappa.py`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/repro/src/verify_rate_kappa.py) · [https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy](https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy)
 
 ---
 <!-- trackio-cell

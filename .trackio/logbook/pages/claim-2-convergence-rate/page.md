@@ -135,7 +135,7 @@ Full table: [`evidence/claim_2/rate_runs.csv`](https://huggingface.co/spaces/Din
 | [`evidence/claim_2/limitations.md`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/evidence/claim_2/limitations.md) | 434 | `a0f7cbc2a5c4c7df024de0e652b8a44d…` |
 | [`evidence/claim_2/environment.json`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/evidence/claim_2/environment.json) | 417 | `8c11c275d3a3868a040d04ec5d913fd8…` |
 
-Verifier: [`repro/src/verify_rate_kappa.py`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/repro/src/verify_rate_kappa.py) · checker: [`repro/src/check_rate_kappa.py`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/repro/src/check_rate_kappa.py) · [https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy](https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy)
+Verifier: [`repro/src/verify_rate_kappa.py`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/repro/src/verify_rate_kappa.py) · checker: [`repro/src/check_rate_kappa.py`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/repro/src/check_rate_kappa.py) · [https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy](https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy)
 
 ---
 <!-- trackio-cell

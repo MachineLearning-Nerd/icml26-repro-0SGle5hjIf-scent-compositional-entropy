@@ -1,24 +1,67 @@
 {
-  "paper": "0SGle5hjIf",
-  "arxiv": "2602.02877",
-  "baseline_score": "5/12",
-  "hf_head": "7fcacca041de1f1d591846177267ffb679c0dea7",
-  "judge_head": "71993d9a3c56ee16bd8935f11d635988eb494f5b",
-  "claim_verdicts": {
-    "1": "VERIFIED",
-    "2": "VERIFIED",
-    "3": "VERIFIED",
-    "4": "VERIFIED",
-    "5": "BLOCKED",
-    "6": "FALSIFIED"
+  "schema_version": 2,
+  "repository": {
+    "owner": "MachineLearning-Nerd",
+    "original_name": "icml26-repro-0SGle5hjIf-scent-compositional-entropy",
+    "target_name": "icml26-scent-compositional-entropy",
+    "paper_name": "A Geometry-Aware Efficient Algorithm for Compositional Entropic Risk Minimization",
+    "target_default_branch": "main",
+    "planned_final_branch_count": 21
   },
-  "cumulative_regression_passed": true,
-  "publication_gate_passed": true,
-  "publication_status": "PUBLISHED_AWAITING_JUDGE",
-  "published_at": "2026-07-24T15:31:55+00:00",
-  "published_files": [
-    "logbook.json",
-    "pages/rigorous-update/page.md"
-  ],
-  "score_increase_claimed": false
+  "paper": {
+    "arxiv": "2602.02877v2",
+    "openreview": "0SGle5hjIf",
+    "authors": [
+      "Xiyuan Wei",
+      "Linli Zhou",
+      "Bokun Wang",
+      "Chih-Jen Lin",
+      "Tianbao Yang"
+    ],
+    "official_code": "https://github.com/Optimization-AI/SCENT",
+    "official_code_revision": "cfbf17925754f18855f26715adeec4773aa0591d",
+    "source_html_sha256": "00670f81db728e76f35ebee5a56019ee9382370bfc43d64d69eddbe74a8adab6",
+    "source_archive_sha256": "be5a8c38a06b2476579e48e9036df67c3daf242ad06c6ec949864aebfcd20fba"
+  },
+  "status": {
+    "overall": "MIXED_RESULTS",
+    "evidence_release_gate": "PASSED",
+    "strict_paper_claim_gate": "NOT_READY",
+    "scoped_verified_claims": 4,
+    "blocked_claims": 1,
+    "falsified_claims": 1,
+    "score_increase_claimed": false
+  },
+  "claim_verdicts": {
+    "1": "VERIFIED_SCOPED",
+    "2": "VERIFIED_SCOPED",
+    "3": "VERIFIED_CONDITIONAL",
+    "4": "VERIFIED_SCOPED",
+    "5": "BLOCKED",
+    "6": "FALSIFIED_FOR_DECLARED_PROTOCOL"
+  },
+  "evidence": {
+    "fixed_command": "uv run --frozen python repro/src/verify_scent.py",
+    "claim_artifacts": ".openresearch/artifacts/claim_{1..6}/",
+    "independent_checkers": [
+      "repro/src/check_dual_evidence.py",
+      "repro/src/check_rate_kappa.py",
+      "repro/src/check_claim5_feasibility.py",
+      "repro/src/check_claim6_pauc.py"
+    ],
+    "root_proxy_outputs_are_authoritative": false
+  },
+  "historical_publication": {
+    "space": "DineshAI/0SGle5hjIf",
+    "candidate_revision": "7fcacca041de1f1d591846177267ffb679c0dea7",
+    "readback_revision": "9aec025410a7a2d2eede107d4c874ce51064ce3f",
+    "last_judge_score": "5/12",
+    "last_judge_revision": "71993d9a3c56ee16bd8935f11d635988eb494f5b",
+    "status": "PUBLISHED_AWAITING_JUDGE"
+  },
+  "branch_cleanup": {
+    "legacy_refs": "master and orx/*",
+    "mapping": "BRANCH_AUDIT.md",
+    "normalization_identity": "MachineLearning-Nerd <MachineLearning-Nerd@users.noreply.github.com>"
+  }
 }

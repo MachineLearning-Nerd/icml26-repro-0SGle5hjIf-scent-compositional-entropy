@@ -25,7 +25,7 @@ PAPER_TITLE = (
 SPACE = "https://huggingface.co/spaces/DineshAI/0SGle5hjIf"
 GH = (
     "https://github.com/MachineLearning-Nerd/"
-    "icml26-repro-0SGle5hjIf-scent-compositional-entropy"
+    "icml26-scent-compositional-entropy"
 )
 OFFICIAL = "https://github.com/Optimization-AI/SCENT"
 OFFICIAL_SHA = "cfbf17925754f18855f26715adeec4773aa0591d"
@@ -42,49 +42,46 @@ CLAIMS = [
     (
         "claim-1-closed-form-dual-update",
         "Claim 1: Closed-form SPMD dual update",
-        "SCENT's stochastic proximal mirror descent update for the dual variable "
-        "nu admits a closed-form expression, nu_t = nu_{t-1} + "
-        "log(1+alpha_t e^{s(w_t;zeta_t)}) - log(1+alpha_t e^{nu_{t-1}}), avoiding "
-        "the numerical instability of exponential-average baselines "
-        "(Algorithm 1, Section 3).",
+        "Lemma 3.1 gives SCENT's stochastic proximal mirror descent update for "
+        "the dual variable in closed form, with a stable log-domain expression "
+        "for the scalar proximal step (Section 3, equations (5)--(7)).",
     ),
     (
         "claim-2-convergence-rate",
         "Claim 2: O(1/sqrt(T)) convergence (Theorem 3.6)",
-        "Theorem 3.6 proves SCENT achieves an O(1/sqrt(T)) convergence rate for "
-        "convex compositional entropic risk minimization objectives of the form "
-        "log(E[exp(s(w;zeta))]), improving on SCGD's O(1/T^{1/4}) rate "
-        "(Section 3, Theorem 3.6).",
+        "Theorem 3.6 gives SCENT an O(1/sqrt(T)) convergence rate for convex "
+        "compositional entropic risk minimization under Assumption 3.2. The "
+        "paper's O(1/T^{1/4}) comparison refers to prior SCGD analysis, not an "
+        "empirical lower bound (Section 3, Theorem 3.6).",
     ),
     (
         "claim-3-dual-boundedness",
         "Claim 3: Dual iterates stay in [c0, c1] (Lemma 3.3)",
-        "Lemma 3.3 proves the dual iterates nu_{i,t} remain bounded within an "
-        "interval [c0, c1] across all iterations, preventing numerical overflow "
-        "in the exponential terms (Section 3, Lemma 3.3).",
+        "Lemma 3.3 proves the dual iterates nu_{i,t} remain within [c0, c1] for "
+        "all coordinates and iterations when the bounded-risk and in-range "
+        "initialization assumptions hold (Section 3, Lemma 3.3).",
     ),
     (
         "claim-4-kappa-and-spmd-vs-sgd",
         "Claim 4: kappa characterises SPMD, and SPMD beats SGD (Theorem 4.3)",
-        "Theorem 4.3 shows that for fixed w, SPMD's convergence is characterized "
-        "by the second-order moment ratio kappa = E[z^2]/E[z]^2, and is provably "
-        "faster than standard SGD by a factor proportional to 1/e^{(nu*-c0)} "
-        "(Section 4, Theorem 4.3).",
+        "Theorem 4.3 gives the fixed-w SPMD bound in terms of kappa = "
+        "E[z^2]/E[z]^2. The projected-SGD bound and the bound comparison factor "
+        "come from Theorem 4.5 and its following remark (Section 4).",
     ),
     (
         "claim-5-extreme-classification",
         "Claim 5: Extreme classification on Glint360K and TreeOfLife-10M",
-        "On extreme classification benchmarks Glint360K and TreeOfLife-10M, SCENT "
-        "consistently outperforms the SOX, U-max, and BSGD baselines on both "
-        "training and validation convergence (Section 5, extreme classification "
-        "experiments).",
+        "The paper reports SCENT and SOX as the strongest methods on Glint360K "
+        "and TreeOfLife-10M, with SCENT ahead of SOX in the plotted curves. This "
+        "audit checks whether the exact feature and training protocol is feasible "
+        "before claiming a reproduction (Section 5.1).",
     ),
     (
         "claim-6-partial-auc",
         "Claim 6: Partial AUC maximization on CIFAR-10 and CIFAR-100",
-        "On partial AUC maximization over CIFAR-10 and CIFAR-100, SCENT matches or "
-        "exceeds the SOX baseline's performance (Section 5, partial AUC "
-        "maximization experiments).",
+        "The paper reports SCENT as slightly better than SOX on CIFAR-10 and "
+        "CIFAR-100 at tau 0.05 and 0.1. This audit evaluates the plotted training "
+        "CERM objective under a declared paired endpoint contract (Section 5.2).",
     ),
 ]
 

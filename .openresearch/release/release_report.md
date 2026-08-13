@@ -38,7 +38,8 @@ The tree used stacked decisions rather than a flat sweep:
 7. Descend to the visual release candidate, strengthen the Claim 4 bound-factor
    checker, and promote its terminal outputs to the final publication gate.
 
-The publication candidate branch is `orx/final-publication-gate`. Its immediate
+The publication candidate branch is `release/final-publication-gate` (renamed
+from `orx/final-publication-gate`). Its immediate
 scientific parent is release-regression commit
 `f2721c483a4705ec777af0be15e3a13119e3a363`.
 

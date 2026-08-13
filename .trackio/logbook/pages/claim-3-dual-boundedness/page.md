@@ -126,7 +126,7 @@ Full table: [`evidence/claim_3/invariant_samples.csv`](https://huggingface.co/sp
 | [`evidence/claim_3/limitations.md`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/evidence/claim_3/limitations.md) | 331 | `3b9e19688ad7deebff4278e3defafe43…` |
 | [`evidence/claim_3/environment.json`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/evidence/claim_3/environment.json) | 421 | `844fd74145b7b40ef7db302959efe039…` |
 
-Verifier: [`repro/src/verify_dual_contracts.py`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/repro/src/verify_dual_contracts.py) · [https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy](https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy)
+Verifier: [`repro/src/verify_dual_contracts.py`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/repro/src/verify_dual_contracts.py) · [https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy](https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy)
 
 ---
 <!-- trackio-cell

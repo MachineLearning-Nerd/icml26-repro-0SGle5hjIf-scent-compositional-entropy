@@ -165,10 +165,10 @@ uv run --frozen python repro/src/verify_scent.py
 ```
 
 The most useful lineage points are the
-[cumulative theory branch](https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy/tree/orx/cumulative-theory-evidence-c1-c4),
-[Claim 5 feasibility branch](https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy/tree/orx/claim-5-full-scale-feasibility-contract),
-[full CIFAR branch](https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy/tree/orx/claim-6-full-cifar-protocol),
-and [integrated verdict branch](https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy/tree/orx/claim-6-integrated-cifar-verdict).
+[cumulative theory branch](https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy/tree/research/cumulative-theory-c1-c4),
+[Claim 5 feasibility branch](https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy/tree/audit/claim-5-feasibility),
+[full CIFAR branch](https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy/tree/research/claim-6-full-cifar),
+and [integrated verdict branch](https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy/tree/release/claim-6-integrated-verdict).
 
 The tutorial notebook embeds the accepted central evidence, so opening it does
 not rerun CIFAR. Formal verdicts remain tied to the raw artifacts and the fixed

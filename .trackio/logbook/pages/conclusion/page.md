@@ -91,7 +91,7 @@ readable:
 
 - Paper: [arXiv:2602.02877](https://arxiv.org/abs/2602.02877) · [ar5iv HTML](https://ar5iv.labs.arxiv.org/html/2602.02877)
 - Official implementation: [https://github.com/Optimization-AI/SCENT/tree/cfbf17925754f18855f26715adeec4773aa0591d](https://github.com/Optimization-AI/SCENT/tree/cfbf17925754f18855f26715adeec4773aa0591d)
-- Reproduction repository: [https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy](https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy)
+- Reproduction repository: [https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy](https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy)
 - This logbook: [https://huggingface.co/spaces/DineshAI/0SGle5hjIf](https://huggingface.co/spaces/DineshAI/0SGle5hjIf)
 - Datasets referenced: [imageomics/TreeOfLife-10M](https://huggingface.co/datasets/imageomics/TreeOfLife-10M),
   [imageomics/TreeOfLife-200M-Embeddings](https://huggingface.co/datasets/imageomics/TreeOfLife-200M-Embeddings),

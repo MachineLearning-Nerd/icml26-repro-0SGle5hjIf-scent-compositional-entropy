@@ -161,7 +161,7 @@ values is contradicted by the one decisive setting.
 | [`evidence/claim_6/shard_protocol.md`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/evidence/claim_6/shard_protocol.md) | 737 | `ae5d6d0ff467b63e774e83d3bdb37c80…` |
 | [`evidence/claim_6/metadata.json`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/evidence/claim_6/metadata.json) | 8091 | `e4d9d8844d7cfdd5afe6706a11bde813…` |
 
-Verifier: [`repro/src/verify_claim6_pauc.py`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/repro/src/verify_claim6_pauc.py) · checker: [`repro/src/check_claim6_pauc.py`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/repro/src/check_claim6_pauc.py) · official pAUC code: [https://github.com/Optimization-AI/SCENT/tree/cfbf17925754f18855f26715adeec4773aa0591d/pauc](https://github.com/Optimization-AI/SCENT/tree/cfbf17925754f18855f26715adeec4773aa0591d/pauc) · [https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy](https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy)
+Verifier: [`repro/src/verify_claim6_pauc.py`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/repro/src/verify_claim6_pauc.py) · checker: [`repro/src/check_claim6_pauc.py`](https://huggingface.co/spaces/DineshAI/0SGle5hjIf/blob/main/repro/src/check_claim6_pauc.py) · official pAUC code: [https://github.com/Optimization-AI/SCENT/tree/cfbf17925754f18855f26715adeec4773aa0591d/pauc](https://github.com/Optimization-AI/SCENT/tree/cfbf17925754f18855f26715adeec4773aa0591d/pauc) · [https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy](https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy)
 
 ---
 <!-- trackio-cell

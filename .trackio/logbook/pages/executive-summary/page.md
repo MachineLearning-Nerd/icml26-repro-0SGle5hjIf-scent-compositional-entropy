@@ -70,4 +70,4 @@ independent checker, and a negative control that is required to fail.
 
 Paper: [arXiv:2602.02877](https://arxiv.org/abs/2602.02877) · official code:
 [https://github.com/Optimization-AI/SCENT/tree/cfbf17925754f18855f26715adeec4773aa0591d](https://github.com/Optimization-AI/SCENT/tree/cfbf17925754f18855f26715adeec4773aa0591d) ·
-reproduction repo: [https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy](https://github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy) · this Space: [https://huggingface.co/spaces/DineshAI/0SGle5hjIf](https://huggingface.co/spaces/DineshAI/0SGle5hjIf)
+reproduction repo: [https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy](https://github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy) · this Space: [https://huggingface.co/spaces/DineshAI/0SGle5hjIf](https://huggingface.co/spaces/DineshAI/0SGle5hjIf)

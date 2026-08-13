@@ -254,7 +254,7 @@ FOOTER = """  <div class="footer" data-measure-role="footer">
     </div>
     <div>
       Logbook: <span class="repo">huggingface.co/spaces/DineshAI/0SGle5hjIf</span> &nbsp;&middot;&nbsp;
-      Code: <span class="repo">github.com/MachineLearning-Nerd/icml26-repro-0SGle5hjIf-scent-compositional-entropy</span>
+      Code: <span class="repo">github.com/MachineLearning-Nerd/icml26-scent-compositional-entropy</span>
     </div>
   </div>"""
 
